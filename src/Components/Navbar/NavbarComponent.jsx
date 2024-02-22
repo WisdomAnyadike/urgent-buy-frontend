@@ -73,7 +73,7 @@ const NavbarComponent = () => {
     <div className="navigation mt-2" >
       <div className="logo-container ms-3"  >
         <Link to={ showSignout === true ? "/dashboard" : "/"} >
-          <img style={{ width: "90px" }} src="./src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" />
+          <img style={{ width: "90px" }} src="urgent buy/src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" />
         </Link>
       </div>
 

@@ -72,7 +72,7 @@ const handleValidate = (e)=> {
               <div className="col-12">
                 <div className="text-center">
                   <a href="#!">
-                    <img src="/src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" alt="BootstrapBrain Logo" width="175" height="150"/>
+                    <img src="./src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" alt="BootstrapBrain Logo" width="175" height="150"/>
                   </a>
                 </div>
               </div>
@@ -122,7 +122,7 @@ const handleValidate = (e)=> {
  
     <div class={`position-fixed w-100 Otp ${isClicked ? 'd-flex' : 'd-none'} bg-light justify-content-center align-items-center`} style={{zIndex:'20', height:"100vh"}}>
     <a href="#!" className='position-absolute' style={{top:"0" , left:"10"}}>
-                    <img src="/src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" alt="BootstrapBrain Logo" width="145" height="130"/>
+                    <img src="./src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" alt="Urgentbuylgog" width="145" height="130"/>
                   </a>
     <div class="position-relative" >
         <div class="card card1 p-5 text-center mt-5 pt-4" style={{width:"fit-content" ,  height:"fit-content"}}>

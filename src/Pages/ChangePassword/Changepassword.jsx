@@ -53,7 +53,7 @@ const navigate = useNavigate()
     {canChangePassword === true ?  <div className="cardStyle">
       <form >
         
-      <img src="/src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" alt="BootstrapBrain Logo" width="175" height="150"/>
+      <img src="./src/assets/C0EEF199-A578-4A12-90A1-0CE418B54686-removebg-preview.png" alt="BootstrapBrain Logo" width="175" height="150"/>
         
         <h2 className="formTitle">
           Change your account password

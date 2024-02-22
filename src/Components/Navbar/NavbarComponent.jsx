@@ -30,7 +30,7 @@ const NavbarComponent = () => {
       if (location.pathname == '/signin' || location.pathname == '/') {
         return 
       } else {
-        alert("Youre not authorized to view this page");
+        alert("Youre not authorized to view this page , sign in");
         window.location.href = '/signin'
       }
 

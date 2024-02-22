@@ -12,16 +12,20 @@ import 'bootstrap/dist/js/bootstrap.bundle.js'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.scss'
 import { Provider } from 'react-redux'
-import { Store } from './Components/Redux/Store.jsx'
+import { Store, persistor } from './Components/Redux/Store.jsx'
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <Provider store={Store}> 
-    <BrowserRouter>
+  <PersistGate loading={null} persistor={persistor}> 
+  <BrowserRouter>
           <App />
     </BrowserRouter>
+  </PersistGate>
+  
     </Provider>
 
   </React.StrictMode>,

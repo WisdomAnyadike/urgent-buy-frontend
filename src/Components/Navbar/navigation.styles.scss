@@ -1,0 +1,41 @@
+.navigation {
+    position: fixed;
+    top: -8px;
+    z-index: 8;
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .logo-container {
+        height: 100%;
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-links-container {
+        width: 270px;
+        height: 100%;
+        display: flex;
+        align-items: end;
+        justify-content: space-around;
+    
+        .nav-link {
+            cursor: pointer;
+        }
+
+        @media (max-width : 480px) {
+            .nav-link{
+                font-size: 12px;
+            }
+            
+        }
+    }
+
+
+ 
+}
+

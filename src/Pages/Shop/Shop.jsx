@@ -9,7 +9,7 @@ const Shop = () => {
   let [datas, setData] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:4000/Api/Products/getProducts').then((res) => {
+    axios.get('https://urgent-buy-backend.onrender.com/Api/Products/getProducts').then((res) => {
       setData(res.data.data);
     }).catch((err) => {
       console.log(err);

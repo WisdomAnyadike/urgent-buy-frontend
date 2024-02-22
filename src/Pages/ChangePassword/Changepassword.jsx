@@ -29,7 +29,7 @@ const navigate = useNavigate()
        } 
       else{
         try {
-          const res = await axios.post('http://localhost:4000/Api/User/changePassword' , {Password: password} 
+          const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/changePassword' , {Password: password} 
            ) 
           if (res.data.status === 'okay') {
             toast.success(res.data.message)  

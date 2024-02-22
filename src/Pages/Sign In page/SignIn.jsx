@@ -40,7 +40,7 @@ const SignIn = () => {
 
 		}), onSubmit: async (value) => {
 			try {
-				const res = await axios.post('http://localhost:4000/Api/User/signup', value)
+				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/signup', value)
 				if (res.data.status == 'success') {
 					alert(res.data.message)
 					
@@ -72,7 +72,7 @@ const SignIn = () => {
 			dispatch(fetchingUser())
 
 			try {
-				const res = await axios.post('http://localhost:4000/Api/User/login', value)
+				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/login', value)
 				if (res.data.status == 'success') {
 					toast.success(res.data.message)			 
 					dispatch(setUserObj(res.data.findUser))

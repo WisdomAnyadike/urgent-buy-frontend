@@ -21,7 +21,7 @@ const [Email , setEmail] = useState('')
 const handleSubmit = async(e)=> {
     e.preventDefault()
 try {
-    const res = await axios.post('http://localhost:4000/Api/User/getOtp' , {Email})
+    const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/getOtp' , {Email})
 
     if (res.data.status === 'okay' ) {
         toast.success(res.data.message)

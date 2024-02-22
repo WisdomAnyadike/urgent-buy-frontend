@@ -10,7 +10,7 @@ const ShopPage = () => {
   const {category} = useParams()
 
   useEffect(()=> {
-axios.get(`http://localhost:4000/Api/Products/getProductsByCategory/${category}`).then((res)=> 
+axios.get(`https://urgent-buy-backend.onrender.com/Api/Products/getProductsByCategory/${category}`).then((res)=> 
 setData(res.data.product)
 ).catch((err)=> console.log(err))
   }, [])

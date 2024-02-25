@@ -52,7 +52,7 @@ const Settings = () => {
      } 
     else{
       try {
-        const res = await axios.post('http://localhost:4000/Api/User/editPassword' , {Password: password} , {
+        const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/editPassword' , {Password: password} , {
           headers:{
               'Authorization': `Bearer ${token}`,
               "content-type": "application/json"
@@ -81,7 +81,7 @@ const Settings = () => {
       console.log('red');
 
       try {
-        const res = await axios.post('http://localhost:4000/Api/User/editUserInfo' , userObj , {
+        const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/editUserInfo' , userObj , {
           headers:{
               'Authorization': `Bearer ${token}`,
               "content-type": "application/json"
@@ -108,7 +108,7 @@ e.preventDefault()
 const verifyDelete = window.confirm("are you sure?");
 if (verifyDelete) {
   try {
-    const res = await axios.post('http://localhost:4000/Api/User/deleteUser' , {} , {
+    const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/deleteUser' , {} , {
       headers:{
           'Authorization': `Bearer ${token}`,
           "content-type": "application/json"

@@ -39,7 +39,7 @@ const obj = {
 }
 
 try {
-    const res = await axios.post('http://localhost:4000/Api/Notify/createNotification' , obj ,  {
+    const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/Notify/createNotification' , obj ,  {
         headers:{
             'Authorization': `Bearer ${token}`,
             "content-type": "application/json"
@@ -51,6 +51,7 @@ try {
     }
     
 } catch (error) {
+
     alert(error.response.data.message)
 }
 

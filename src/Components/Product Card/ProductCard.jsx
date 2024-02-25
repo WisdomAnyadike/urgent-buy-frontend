@@ -67,9 +67,9 @@ try {
                 </a>
                 <span className="product-discount-label">-23%</span>
                 <ul className="product-links">
-                    <li><a href="#"><i className="fa fa-search"></i></a></li>
-                    <li onClick={()=>handleLike( productName)}><a href="#"><i className="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i className="fa fa-random"></i></a></li>
+                    <li><a ><i className="fa fa-search"></i></a></li>
+                    <li onClick={()=>handleLike( productName)}><a ><i className="fa fa-heart"></i></a></li>
+                    <li><a ><i className="fa fa-random"></i></a></li>
                
                 </ul>
                 <button className='border-0 add-to-cart' onClick={()=> handleCart(_id , productName , productImage , productPrice)}   >Add to Cart</button>

@@ -22,6 +22,7 @@ import DropSlicer from './Dropdownslice';
 import Userslice from './Userslice';
 import PasswordSlice from './Changepassslice';
 import { combineReducers } from '@reduxjs/toolkit';
+import  NotifySlice  from './NotifySlice';
 
 const persistConfig = {
   key: 'root',
@@ -32,6 +33,8 @@ const rootReducer = combineReducers({
   DropSlicer,
   Userslice,
   PasswordSlice,
+  NotifySlice
+  
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

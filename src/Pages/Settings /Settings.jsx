@@ -7,6 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { setUserObj } from '../../Components/Redux/Userslice';
+import { formatDistanceToNow } from 'date-fns';
+import TimeAgo from '../../Components/Time/Timeago';
+
 
 
 const Settings = () => {
@@ -102,26 +105,34 @@ const Settings = () => {
 
     const handleDelete = async (e)=> {
 e.preventDefault()
-try {
-  const res = await axios.post('http://localhost:4000/Api/User/deleteUser' , {} , {
-    headers:{
-        'Authorization': `Bearer ${token}`,
-        "content-type": "application/json"
-    }} ) 
-
-    if (res.data.status === 'okay') {
-      alert(res.data.message)
-      localStorage.removeItem('urgentBuyToken')
-      navigate('/signin')
-      
-    }
+const verifyDelete = window.confirm("are you sure?");
+if (verifyDelete) {
+  try {
+    const res = await axios.post('http://localhost:4000/Api/User/deleteUser' , {} , {
+      headers:{
+          'Authorization': `Bearer ${token}`,
+          "content-type": "application/json"
+      }} ) 
   
-} catch (error) {
-
-  alert(error.response.data.message)
+      if (res.data.status === 'okay') {
+        alert(res.data.message)
+        localStorage.removeItem('urgentBuyToken')
+        navigate('/signin')
+        
+      }
+    
+  } catch (error) {
   
+    alert(error.response.data.message)
+    
+  }
 }
+
     }
+    
+
+    const notifyArr = useSelector(state => state.NotifySlice.notifyArr)
+    console.log(notifyArr);
     
 
   return (
@@ -238,7 +249,10 @@ try {
               <form className='d-flex flex-column align-items-start text-start p-1  justify-content-between'>
               <div className="w-100 mb-0">
                   <label className="d-block mb-1">Notifications</label>
-                  <div className="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm"> No current Notifications</div>
+                <div className="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm"> {notifyArr.length === 0 ?  <small> No current Notifications  </small>: <div className='w-100 bg-light ' style={{overflowY:'scroll' , maxHeight:'300px'}}> {notifyArr.map(({message , time})=> 
+                  <li className='w-100 border  d-flex align-items-center justify-content-between mb-2 p-1'> <small className='me-1'> { message.includes(userObj.FullName) ? message.replace(userObj.FullName , 'You') : message }</small>  <small className='d-flex justify-content-end align-items-center' style={{width:"35%"}}>{  <TimeAgo timestamp={time}/>  } </small> </li>
+                  
+                   ) }</div>  } </div>
                 </div>
                
               </form>

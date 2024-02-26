@@ -8,13 +8,16 @@ import axios from 'axios';
 
 import { useSelector } from 'react-redux';
 import { setNotifyArr, setNotifyArrEmpty } from '../Redux/NotifySlice';
+import { setIsLiked } from '../Redux/Likeslice';
+
 
 
 
 
 
 const ProductCard = ({ data : { _id, productName, productImage, productPrice } }) => {
-    const [isClicked , setIsClicked] = useState(false)
+    
+
     const userObj = useSelector(state => state.Userslice.userObj)
    const dispatch = useDispatch()
    const token = localStorage.getItem("urgentBuyToken")
@@ -32,8 +35,9 @@ const ProductCard = ({ data : { _id, productName, productImage, productPrice } }
 
     }
 
-    const handleLike = async(productName )=> {
-        setIsClicked(!isClicked)
+    const handleLike = async(e, productName )=> {
+        const element = e.target
+        dispatch(setIsLiked(element))
 const obj = {
     ProductName: productName ,
     ProductLike : 1 ,
@@ -47,7 +51,9 @@ try {
             "content-type": "application/json"
         }}   )
     if (res.data.status === 'okay') {
-        // alert(res.data.userNotify )    
+        // alert(res.data.userNotify )  
+    
+      
     dispatch(setNotifyArr({message:res.data.message , time:res.data.timestamp }))
   
     }
@@ -71,7 +77,7 @@ try {
                 <span className="product-discount-label">-23%</span>
                 <ul className="product-links">
                     <li><a ><i className="fa fa-search"></i></a></li>
-                    <li className={ isClicked ? 'likebutton' : '' } onClick={()=>handleLike( productName)}><a ><i className="fa fa-heart"></i></a></li>
+                    <li onClick={(e)=>handleLike(e, productName)}> <a ><i className="fa fa-heart"></i></a> </li>
                     <li><a ><i className="fa fa-random"></i></a></li>
                
                 </ul>

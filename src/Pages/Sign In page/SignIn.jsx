@@ -19,9 +19,11 @@ const SignIn = () => {
 	
 	
 	const navigate = useNavigate()
-	
+
 
 	
+const [isClicked , setIsClicked] = useState(false)
+const [isPressed , setIsPressed] = useState(false)	
 	
 	
 	const [isPassword, setIsText] = useState(true)
@@ -42,8 +44,8 @@ const SignIn = () => {
 			try {
 				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/signup', value)
 				if (res.data.status == 'success') {
+					setIsClicked(true)
 					alert(res.data.message)
-					
 					const container = document.getElementById('container');
 					container.classList.remove("right-panel-active");
 				} else {
@@ -74,6 +76,7 @@ const SignIn = () => {
 			try {
 				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/login', value)
 				if (res.data.status == 'success') {
+					setIsPressed(true)
 					toast.success(res.data.message)			 
 					dispatch(setUserObj(res.data.findUser))
 					localStorage.setItem('urgentBuyToken', res.data.genToken)
@@ -147,7 +150,7 @@ console.log(userObj);
 				 <input onBlur={formik.handleBlur} name='Password' onChange={formik.handleChange} type={isPassword ? 'password' : 'text'} placeholder="Password" /> 	 
 
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik.touched.Password && formik.errors.Password ? formik.errors.Password : ''}</small></small>
-					<button type='submit'  className='rounded mt-4 buttonClass' style={{ backgroundColor: "#4e04b2", border: '1px solid #4e04b2', minWidth: "150px" }} >Sign Up</button>
+					<button type='submit' disabled={isClicked ? true : false }  className='rounded mt-4 buttonClass' style={{ backgroundColor: "#4e04b2", border: '1px solid #4e04b2', minWidth: "150px" }} >Sign Up</button>
 
 
 				</form>
@@ -157,14 +160,14 @@ console.log(userObj);
 				<form onSubmit={formik2.handleSubmit} action="#">
 					<h1 className='customer-text1' style={{ minWidth: "160px" }}>Sign in</h1>
 
-					<span className='mb-3 customer-text1' style={{ fontFamily: 'monospace' }} > Dont have and account? Sign up</span>
+					<span className='mb-3 customer-text1' style={{ fontFamily: 'monospace' }} > Dont have an account? Sign up</span>
 					<input onBlur={formik2.handleBlur} name='Email' onChange={formik2.handleChange} type="email" placeholder="Email" />
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Email && formik2.errors.Email ? formik2.errors.Email : ''}</small></small>
 					<input onBlur={formik2.handleBlur} name='Password' onChange={formik2.handleChange} type="password" placeholder="Password" />
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Password && formik2.errors.Password ? formik2.errors.Password : ''}</small></small>
 					<Link style={{ minWidth: "180px" }} to="/forgotpassword">Forgot your password?</Link>
-					<button type='submit' className='rounded mt-4 buttonClass' style={{ minWidth: "160px" }} >Sign In</button>
-					<ToastContainer
+					<button type='submit'  disabled={isPressed ? true : false } className='rounded mt-4 buttonClass' style={{ minWidth: "160px" }} >Sign In</button>
+				<div style={{zIndex:90}}> <ToastContainer
 						zIndex={90}
 						position='bottom-left'
 						autoClose={5000}
@@ -174,7 +177,7 @@ console.log(userObj);
 						rtl={false}
 						pauseOnFocusLoss
 						draggable
-						pauseOnHover />
+						pauseOnHover /></div>	
 				</form>
 			</div>
 			<div className="overlay-container">

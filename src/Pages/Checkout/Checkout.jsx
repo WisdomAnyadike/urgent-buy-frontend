@@ -28,6 +28,21 @@ const Checkout = () => {
    
 const isEmpty = cartArr.length === 0;
 
+const postIt =  async(ref) => {
+  try {
+   const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/Transaction/createTransaction', { transactionReference: ref.reference })
+
+   if(res.data.status == 'okay'){
+    alert('success')
+   }else {
+    alert('failed')
+   }
+  } catch (error) {
+    console.log(error);
+  }
+
+
+}
 
 
 
@@ -49,13 +64,11 @@ const publicKey = 'pk_test_9a558288d1670a641dafa6f4e899ddb24f2fe749'; // Your Pa
     publicKey,
     name: FullName,
     text: "Pay with Paystack",
-    onSuccess:  (ref) => {
+    onSuccess: (ref) => {
       console.log(ref);
       dispatch(emptyCart());
-      axios.post('https://urgent-buy-backend.onrender.com/Api/Transaction/createTransaction', { transactionReference: ref.reference })
-        .catch(error => {
-          console.error("Error:", error);
-        });
+    postIt(ref)
+    
     }
      ,
     onClose: () => alert("Wait! You need this clothes, don't go!!!!"),

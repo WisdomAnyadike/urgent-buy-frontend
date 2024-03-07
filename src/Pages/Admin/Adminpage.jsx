@@ -55,6 +55,28 @@ const Adminpage = () => {
   }, [Transactions5])
 
 
+  const [Users1, setUsers1] = useState([])
+  const [Users2, setUsers2] = useState([])
+  const [Users3, setUsers3] = useState([])
+  const [Users4, setUsers4] = useState([])
+  const [Users5, setUsers5] = useState([])
+
+  useEffect(() => {
+    axios.get('https://urgent-buy-backend.onrender.com/Api/User/getUsers1').then((res) => setUsers1(res.data.data)).catch((err) => console.log(err))
+  }, [Users1])
+  useEffect(() => {
+    axios.get('https://urgent-buy-backend.onrender.com/Api/User/getUsers2').then((res) => setUsers2(res.data.data)).catch((err) => console.log(err))
+  }, [Users2])
+  useEffect(() => {
+    axios.get('https://urgent-buy-backend.onrender.com/Api/User/getUsers3').then((res) => setUsers3(res.data.data)).catch((err) => console.log(err))
+  }, [Users3])
+  useEffect(() => {
+    axios.get('https://urgent-buy-backend.onrender.com/Api/User/getUsers4').then((res) => setUsers4(res.data.data)).catch((err) => console.log(err))
+  }, [Users4])
+  useEffect(() => {
+    axios.get('https://urgent-buy-backend.onrender.com/Api/User/getUsers5').then((res) => setUsers5(res.data.data)).catch((err) => console.log(err))
+  }, [Users5])
+
   useEffect(() => {
     const element = document.getElementById("list-dashboard-list");
 
@@ -137,25 +159,23 @@ const Adminpage = () => {
     }]
   };
 
-  const chart1 = [
-    { uv: 400, pv: 320 },
-    { uv: 400, pv: 290 },
-    { uv: 400, pv: 240 },
-    { uv: 300, pv: 456 },
-    { uv: 300, pv: 556 },
-    { uv: 600, pv: 678 },
-    { uv: 700, pv: 367 },
+
+
+ 
+
+  const chart2 = [
+  
+    { pv: Transactions2.reduce((a,b)=> a + b.transactionAmount , 0)  },
+    { pv:Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) },
     // Add more data points as needed
   ];
 
   const chart3 = [
-    { pv: Users.lenght },
-    { pv: Users.lenght },
-    { pv: Users.lenght },
-    { pv: Users.lenght },
-    { pv: Users.lenght },
-    { pv: Users.lenght },
-    { pv: Users.lenght },
+    { pv: Users5.length },
+    { pv: Users4.length },
+    { pv: Users3.length },
+    { pv: Users2.length },
+    { pv: Users1.length },
     // Add more data points as needed
   ];
 
@@ -167,6 +187,25 @@ const Adminpage = () => {
     { pv: Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) },
     { pv: Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) },
  
+    // Add more data points as needed
+  ];
+
+
+  const [activeUsers , setActiveUsers] = useState('')
+  const [activeUsers2 , setActiveUsers2] = useState('')
+  useEffect(()=> {
+    const todaysUsers  =  Transactions1.map(({transactionUser})=>  transactionUser)
+    setActiveUsers(new Set(todaysUsers).size)
+
+    const yesterdaysUsers  =  Transactions2.map(({transactionUser})=>  transactionUser)
+    setActiveUsers2(new Set(yesterdaysUsers).size)
+   
+  }, [Transactions1 , Transactions2])
+
+  const chart1 = [
+    {  pv: activeUsers2 },
+    {  pv: activeUsers },
+
     // Add more data points as needed
   ];
 
@@ -196,11 +235,47 @@ const Adminpage = () => {
 
       </div>
       <div className=" p-2 d-flex align-items-center justify-content-between dashflexer" style={{ width: '99%' }}>
-        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }} >  <Chart data={chart1} name={'Revenue'} /> </div>
+        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }} >  <Chart data={chart1} name={'Active Users'} value={activeUsers} valueprops={ activeUsers > activeUsers2 ? 'text-success' : 'text-danger'} time={'yesterday'} 
 
-        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }}>  <Chart name={'Daily Income'} data={''} value={Transactions1.reduce((a,b)=> a + b.transactionAmount , 0)} /> </div>
-        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }} >  <Chart name={'Total Users'} data={chart3} value={Users.length} valueprops={'text-success'} percent={''} time={new Date().toLocaleTimeString()} /> </div>
-        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }} >  <Chart name={'Total Income'} valueprops={ Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) > Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) ? 'text-success' : 'text-danger'} data={chart4} value={ `N${Transactions.reduce((a,b)=> a + b.transactionAmount , 0)}`} time={'last 5 days'} /> </div>
+        graphColor={activeUsers > activeUsers2 ? '#1b8655' : '#dc3446'}
+        percent={`${ (((activeUsers / Users.length) * 100) - (( activeUsers2 / Users.length) * 100)).toFixed() }%`}
+
+        percentProps={ (((activeUsers / Users.length) * 100) - (( activeUsers2 / Users.length) * 100)).toFixed()  > 0 ? 'text-success' : 'text-danger'}
+         /> </div>
+
+        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }}>  <Chart name={'Daily Income'} data={chart2} 
+        valueprops={ Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) > Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) ? 'text-success' : 'text-danger'}  value={ `N${Transactions1.reduce((a,b)=> a + b.transactionAmount , 0)}`} time={'yesterday'} 
+
+        graphColor={Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) > Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) ? '#1b8655' : '#dc3446'}
+
+
+         percentProps={Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) > Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) ? 'text-success' : 'text-danger'} 
+         
+         percent={ `${((Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100).toFixed() - ((Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100).toFixed() }%`}  /> </div>
+
+
+        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }} >  <Chart name={'Total Users'} data={chart3} value={Users.length} graphColor={Users1> Users2 ? '#1b8655' : '#dc3446'} 
+        
+        valueprops={ Users1> Users2 ? 'text-success' : 'text-danger'}
+        
+         percent={`${(((Users1.length / Users.length) * 100) - ((Users2.length / Users.length) * 100) - ((Users3.length / Users.length) * 100) - ((Users4.length / Users.length) * 100) -  ((Users5.length / Users.length) * 100)   ).toFixed()}%`} 
+
+        percentProps={ (((Users1.length / Users.length) * 100) - ((Users2.length / Users.length) * 100) - ((Users3.length / Users.length) * 100) - ((Users4.length / Users.length) * 100) -  ((Users5.length / Users.length) * 100)   ).toFixed() > 0 ? 'text-success' : 'text-danger' }
+        
+        time={new Date().toLocaleTimeString()} /> </div>
+
+        <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }} >  <Chart name={'Total Income'} 
+        
+        graphColor={Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) > Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) ? '#1b8655' : '#dc3446'} valueprops={ Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) > Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) ? 'text-success' : 'text-danger'} 
+        
+        data={chart4} value={ `N${Transactions.reduce((a,b)=> a + b.transactionAmount , 0)}`} time={new Date().toLocaleTimeString()} 
+        
+        percentProps={
+((Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100).toFixed() - ((Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() - ((Transactions3.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() - ((Transactions4.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() - ((Transactions5.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() >  0  ? 'text-success' : 'text-danger'}
+        
+        
+         percent={ `${ 
+((Transactions1.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100).toFixed() - ((Transactions2.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() - ((Transactions3.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() - ((Transactions4.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() - ((Transactions5.reduce((a,b)=> a + b.transactionAmount , 0) / Transactions.reduce((a,b)=> a + b.transactionAmount , 0)) * 100 ).toFixed() }%`} /> </div>
 
 
       </div>
@@ -211,7 +286,7 @@ const Adminpage = () => {
             className=" rounded  flex-column p-2 d-flex shadow align-items-center justify-content-start mb-3"
             style={{ width: "95%", minWidth: '300px', height: "625px", backgroundColor: "white" }}
           >
-            <p className="w-100 d-flex align-items-center ps-2 pe-2 mt-2 mb-5 justify-content-between ">
+            {/* <p className="w-100 d-flex align-items-center ps-2 pe-2 mt-2 mb-5 justify-content-between ">
               {" "}
               <h6 style={{ fontWeight: "600" }}>Users </h6>{" "}
               <select
@@ -223,8 +298,8 @@ const Adminpage = () => {
                 <option> Boarding </option>
                 <option> Day </option>
               </select>
-            </p>
-            <div className="w-100 justify-content-between d-flex align-items-center ">
+            </p> */}
+            {/* <div className="w-100 justify-content-between d-flex align-items-center ">
 
               <Doughnutchart style={'w-50 ps-4'} data={data} />
 
@@ -247,7 +322,7 @@ const Adminpage = () => {
                   </small>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
 

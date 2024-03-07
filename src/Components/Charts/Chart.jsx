@@ -5,7 +5,7 @@ import { LineChart,  Tooltip, CartesianGrid, Line } from "recharts"
  
     
 
-const Chart = ( {data , name , percent , time , value , valueprops }) => {
+const Chart = ( {data , name , percent , time , value , valueprops , graphColor , percentProps }) => {
   return (
   
 
@@ -13,14 +13,14 @@ const Chart = ( {data , name , percent , time , value , valueprops }) => {
                 <div className="d-flex flex-column h-100 justify-content-between p-2">
                     <span> <small> {name} </small>  </span>
                     <h2 className={valueprops}> {value} </h2>
-                    <small className="text-secondary"> <small> {percent} from {time} </small>  </small>
+                    <small className="text-secondary"> <small > <small className={percentProps}> {percent}  </small>from {time} </small>  </small>
     
                 </div>
                 <div className="pe-2 w-50 h-100 d-flex align-items-center justify-content-center"> 
                 <LineChart width={100} height={100} data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                     <Tooltip />
                     <CartesianGrid stroke="#f5f5f5" />
-                    <Line type="monotone"  dataKey="pv" stroke="#387908" yAxisId={1} />
+                    <Line type="monotone"  dataKey="pv" stroke={graphColor} yAxisId={1} />
                 </LineChart>  </div>
     
     

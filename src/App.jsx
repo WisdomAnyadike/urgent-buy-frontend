@@ -10,6 +10,7 @@ import Checkout from './Pages/Checkout/Checkout'
 import Settings from './Pages/Settings /Settings'
 import Forgotpassword from './Pages/ForgotPassword/Forgotpassword'
 import Changepassword from './Pages/ChangePassword/Changepassword'
+import Adminpage from './Pages/Admin/Adminpage'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
    </Route>
    <Route path='/forgotpassword' element={<Forgotpassword/>}/> 
    <Route path='/changepassword' element={<Changepassword/>}/>
+   <Route  path='/admin' element={<Adminpage/>} />
     </Routes>
   )
 }

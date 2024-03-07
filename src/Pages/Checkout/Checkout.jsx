@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { decreaseQuantity, emptyCart, removeItem, setCartArr } from '../../Components/Redux/Dropdownslice'
 import Button from '../../Components/Buttons/Button'
 import { PaystackButton } from 'react-paystack'
+import axios from 'axios'
 
 
 
@@ -16,7 +17,9 @@ const Checkout = () => {
     const dispatch = useDispatch()
 
     const cartArr = useSelector(state => state.DropSlicer.cartArr)
-    const {Email} = useSelector(state => state.Userslice.userObj)
+    const {Email , FullName} = useSelector(state => state.Userslice.userObj)
+
+    console.log(FullName);
  
     let [arr, setArr] = useState([])
     useEffect(()=> {   
@@ -33,17 +36,28 @@ let total = arr.reduce((a,b)=> a + (b.productPrice * b.quantity) , 0 )
 const publicKey = 'pk_test_9a558288d1670a641dafa6f4e899ddb24f2fe749'; // Your Paystack public key
   const amount = total * 100; 
 
+
+
   const componentProps = {
     email: Email ,
     amount,
+    phone:"+2348164934974",
     metadata: {
-      productName:'wisdom',
-      phone:"+2348164934974",
+      FullName: FullName,
+     
     },
     publicKey,
+    name: FullName,
     text: "Pay with Paystack",
-    onSuccess: () =>
-        dispatch(emptyCart()) ,
+    onSuccess:  (ref) => {
+      console.log(ref);
+      dispatch(emptyCart());
+      axios.post('https://urgent-buy-backend.onrender.com/Api/Transaction/createTransaction', { transactionReference: ref.reference })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    }
+     ,
     onClose: () => alert("Wait! You need this clothes, don't go!!!!"),
    
   }

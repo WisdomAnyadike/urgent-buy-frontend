@@ -25,3 +25,812 @@ code{
 .bg-color{
     background-color: #fd1f6f;
 }
+
+
+
+
+
+  
+
+  .body-cover{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(241,247,253);
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+  
+  }
+  .firstreportdiv{
+    width: 62%;
+  }
+  .secreportdiv{
+    width: 36%;
+  }
+  .loginimage {
+    border-radius: 10px;
+    background-color: white;
+  }
+  
+  .admininput{
+    width: 300px;
+  }
+  .loginBox label{
+    font-size: 14px;
+  }
+  
+  .loginBox input , input{
+    outline: none;
+  }
+  
+  .profile{
+    border-radius: 25px;
+    margin-left: 350px;
+    width: 240px ;
+   background-color: '#f1f7fd' ;
+  }
+  
+  .logininput{
+    width: 75%;
+  }
+  
+  .sidebar2{
+   left: -100%;
+  }
+  
+  .sidebar3{
+  left: 0;
+  }
+  
+  .profileimg{
+    border-radius: 50%;
+  }
+  
+  .for-profilebuttons{
+    min-width: 200px;
+  }
+  
+  .userseccolumn{
+    width: 220px;
+  }
+  
+  .userseccolclass{
+    width: 60%;
+    text-align: left;
+  
+  }
+  
+  .studentseccolumn{
+    width: 220px;
+  }
+  .usersechead{
+    width: 50%;
+  }
+  .accountface1 {
+  
+   width:58%;
+   height:630px;
+  }
+  
+  
+  .logincenter{
+    left: 5%;
+  }
+  .roletabletext{
+    width: 29%;
+  }
+  .theaccountline{
+    width: 95%;
+  }
+  
+  .accountface2{
+    width: 40%;
+    height:700px;
+  }
+  textarea , select{
+    outline: none;
+  }
+  .dashwidth{
+    width: 270px;
+  }
+  
+  .linkers{
+    background-color: white;
+  }
+  
+  .accountbuttons{
+    width: 300px;
+  }
+  .adminuserbuttons{
+    width: 200px;
+  }
+  
+  .sidebarwidth{
+   width:90% ; 
+   
+  }
+  .textcolor{
+    color: #3e3d3d;
+  }
+  
+  .resultside{
+    width: 25%;
+    align-self: end;
+  }
+  .resultside2{
+    width: 74%;
+  }
+  
+  .resultque1, .resultque2{
+  width: 49.8%;
+  }
+  
+   .body{
+    display: flex;
+   background-color: whitesmoke; 
+   flex-direction: column;
+   align-items: center;
+   width: 80%;
+   }
+  
+   .accountline{
+    font-size: 16px;
+   }
+  
+   .activity{
+    font-size: 14px;
+   }
+  .listed , .listed2{
+   display: flex;
+   align-items: center;
+    height: 40px;
+    text-decoration: none;
+    color: black;
+    padding-left: 10px;
+  }
+  
+  .newtable{
+    width: 320px;
+  }
+  
+  .middlebox{
+    width: 65%;
+  }
+  
+  .listed:focus-within , .logoutbutton:focus-within , .listed Icon{
+    background-color: #f1f7fd;
+    color: black;
+  }
+  
+  .listed2:focus-within ,  .listed2 Icon{
+    color: #147fe4;
+  }
+  
+  .listing{
+    display: flex;
+    align-items: center;
+     height: 40px;
+     text-decoration: none;
+     color: black;
+     padding-left: 20px;
+   border: none;
+  
+   }
+   .listing:focus-within{
+    border-bottom: 3px solid #dbebfa;
+   }
+  
+   .listingbuttonact{
+  border-bottom: 3px solid #dbebfa;
+   }
+  
+  
+  
+  .logoutbutton:focus-within{
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .pagenav{
+    justify-content: end;
+  }
+  
+  .attendreasonside{
+    width: 27%;
+    display: flex;
+  }
+  
+  .pagenavigator{
+    width: 750px;
+  
+  }
+  .pagenavigator2{
+   width: 18%;
+  
+  }
+  input{
+    outline: none;
+  }
+  
+  .logout{
+    margin-top: 200px;
+  }
+  
+  .d-text{
+    width: 95%;
+  }
+  
+  .pages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .page1{
+    display: none;
+  
+  }
+  .questions{
+    display: flex;
+  }
+  
+  .removeside{
+  display: flex;
+  }
+  
+  
+  .pagenums{
+    width: 30px;
+  }
+  .adminlogout{
+    font-weight: 600;
+    color: #147fe4;
+    border: none;
+    background-color: #e0e6ed00;
+  }
+  
+  .maininput{
+    display: flex;
+  }
+  .act , .buttonact{
+    color:#147fe4;
+  }
+  
+  .buttonact{
+    color: black;
+    font-family: 'Satoshi-BoldItalic';
+    background-color: #f1f7fd;
+    font-weight: 900;
+  }
+  
+  .buttonact2{
+    color: #147fe4;
+    font-family: 'Satoshi-Bold';
+    font-weight: 900;
+  }
+  
+  .option{
+    display: none;
+  }
+  
+  .logo{
+    display: none;
+  }
+  
+  .myshadow{
+     box-shadow :0px 0px 5px #96badcb6;
+  }
+  #prof{
+    display: flex;
+  }
+  .sidebar{
+    display: flex;
+  }
+  
+  .accountdate{
+    font-size: 13px;
+  }
+  
+  .thetable{
+    font-size:15px;
+  }
+  
+  .side{
+    display: flex;
+    background-color:#127FE4;
+  }
+  
+  .bg-white{
+    background-color: #ffffff;
+  }
+  
+  .userbuttons{
+    display: flex;
+  }
+  
+  .cbtbox1{
+    width: 60%;
+  }
+  .cbtbox2{
+    width: 40%;
+  }
+  .adduserbox2{
+    width: 75%;
+    flex-direction: row;
+  }
+  
+  .adduserbox1{
+    width: 75%;
+  
+  }
+  
+  .adduserbox3{
+    width: 100%;
+  
+  }
+  .admindiv{
+    width: 60%;
+  }
+  
+  .adduserform , .adduserform2{
+    width: 40%;
+  }
+  .addstudentform{
+    width: 46%;
+  }
+  
+  .studentp{
+    justify-content: start;
+  }
+  
+  .tableflexer{
+    display: flex;
+  }
+  
+  .reporttitle{
+    width: 35%;
+  }
+  
+  .schoolreptitle{
+    width: 300px;
+  }
+  .height{
+    height: 35px;
+  }
+  
+  .dashflexer{
+    flex-wrap: wrap;
+  }
+  
+  .accountface{
+    justify-content: space-between;
+    align-items: start;
+  }
+  
+  .attendancediv1{
+   width: 70%;
+    }
+  
+    .result-div{
+      width: 50%;
+    }
+  
+  /* media queries */
+  @media (max-width:1300px) {
+  .result-div{
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  }
+  
+  @media (max-width:1190px) {
+     .studenttabletext1{
+      display: none;
+     }
+  
+    .newtable{
+      width: 100%;
+    }
+    .reporttitle{
+      width: 50%;
+    }
+  
+    .profile{
+  
+      margin-left: 250px;
+    }
+    
+    .resultside{
+      width: 100%;
+      align-items: center;
+    }
+  .resultside1{
+    flex-direction: column;
+  }
+    .resultside2{
+      width: 100%;
+    }
+  }
+  
+  @media (max-width:1100px) {
+  
+    .questions{
+      display: none;
+    }
+    .recenttext{
+      width: 100%;
+    }
+    .profile{
+      width: 220px;
+      margin-left: 200px;
+    }
+    .loginimage{
+      border-radius: 0px;
+      background-color: rgb(1, 1, 16);
+      width: 100%;
+  
+    }
+   .loginspace{
+    width: 0%;
+   }
+   .logincenter{
+    left: 30%;
+   }
+  
+  
+  }
+  
+  @media (max-width:1076px) {
+  
+  
+    .studentseccolumn{
+      width: 220px;
+        }
+      
+        .studentsechead{
+          width: 90%;
+        }
+   
+    .studenttabletext {
+      display: none;
+    }
+  
+   
+    
+    
+    .tableflexer{
+      display: none;
+    }
+  
+  .accountface{
+    flex-direction: column;
+    align-items: center;
+  }
+  
+   .accountface1 , .accountface2{
+   width: 95%;
+  
+   }
+  
+  }
+  @media (max-width:1025px) {
+  .attendancediv1{
+    width: 100%; 
+    }
+  
+  .removeside2{
+    display: none;
+      } }
+  
+  
+  @media (max-width:996px) {
+    .reportmaindiv{
+      flex-direction: column;
+    }
+    .firstreportdiv , .secreportdiv{
+      width: 100%;
+    }
+    .admindiv{
+      width: 80%;
+    }
+   
+  
+    .removeside{
+      display: none;
+    }
+    .profile{
+      width: 220px;
+      margin-left: 150px;
+    }
+    
+  }
+  @media (max-width:918px) {
+    .attendreasonside{
+      display: none;
+     }
+    .profile{
+      width: 220px;
+      margin-left: 100px;
+    }
+    .sidebar , .side{
+      display: none;
+    }
+   
+  
+    .option{
+      display: flex;
+    }
+    
+    .body{
+      width: 100%;
+    }
+    .logincenter{
+      left: 20%;
+     }
+  }
+  
+  @media (max-width:808px) {
+    .pagenums{
+      display: none;
+    
+    }
+    .pages{
+      display: none;
+    }
+    .page1{
+      display: block;
+      width: 100px;
+    }
+    .pagenav{
+      justify-content: center;
+    }
+  
+    .pagenavigator{
+      width: 200px;
+    }
+  
+    .pagenavigator2{
+      width: 200px;
+     
+     }
+  }
+  
+  @media (max-width:752px) {
+    .profile{
+      width: 220px;
+      margin-left: 50px;
+    }
+  
+    .maininput{
+     visibility: hidden;
+     }
+  
+     .cbtbox1{
+      width: 100%;
+     }
+  
+     .cbtbox2{
+      width: 100%;
+     }
+    
+    
+  }
+  
+  @media (max-width:698px) {
+  
+  
+  
+  
+    .addstudentform{
+      width: 95%;
+    }
+  }
+  
+  
+  @media (max-width:660px) {
+    .reporttitle{
+      width: 90%;
+    }
+    .schoolreptitle{
+      width: 70%;
+    }
+  
+  
+    .userseccolumn{
+  width: 220px;
+    }
+  
+    .usersechead{
+      width: 90%;
+    }
+    .tabletext{
+      display: none;
+    }
+  
+    .logincenter{
+      left: 20%;
+     }
+  
+     .logininput{
+      width: fit-content;
+     }
+  
+     .loginBox , .loginBox2{
+      width: 300px;
+      height: 400px;
+     }
+  
+     .loginBox2{
+      height: 300px;
+     }
+  
+  .thetable{
+  
+    margin-right: 0px;
+  }
+  
+  #prof {
+    display: none;
+  }
+  .logo{
+    display: block;
+  }
+  
+  .resultque1, .resultque2{
+    width: 100%;
+    }
+  
+  }
+  @media (max-width:630px) {
+    .accountline{
+      font-size: 14px;
+      width: 100%;
+     }
+  
+    .adduserform2 , .addstudentform{
+      width: 95%;
+    }
+    .adduserbox2{
+      width: 100%;
+      flex-direction: column;
+    }
+    .adduserbox1 , .adduserbox3{
+      width: fit-content;
+    }
+  
+  }
+  
+  
+  @media (max-width:550px) {
+    .cbt-result-col{
+      width: 30%;
+    }
+    
+    .dashwidth , .dashwidth2 {
+      width: 300px;
+    }
+  
+    .dashflexer{
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+  
+    .middlebox{
+      width: 100%;
+    }
+    
+    .d-text{
+      font-size: 11px;
+      width: 75%;
+    }
+    .roletabletext{
+      width: fit-content;
+    }
+    .adminuserbuttons{
+      width: 170px;
+     }
+  .addusertext{
+    font-size: 14px;
+  
+  }
+  
+    .userline{
+      font-size: 14px;
+    
+      
+    }
+    .userbuttons , .for-profilebuttons{
+    display: none;
+    min-width: 0;
+    }
+    
+    .admininput{
+      font-size: 12px;
+      width: 200px;
+    }
+  
+  
+  
+   
+  
+   .accountbuttons{
+    width: 250px;
+   }
+  
+   .theaccountline{
+    width: 95%;
+   }
+  
+  
+    }
+    @media (max-width:468px) {
+  
+    .marginleft{
+      margin-left: 0px;
+      font-size: 12px;
+    }
+  .studentp{
+    justify-content: space-around;
+  }
+  }
+  
+  
+    @media (max-width:400px) {
+   
+    
+      .adminuserbuttons{
+        width: 150px;
+       }
+      .logincenter{
+        left: 10%;
+       }
+    
+  
+      .thetable , .accountline , .activity , .accountdate{
+     font-size: 13px;
+     
+      }
+      
+      .accountbuttons{
+        width: 200px;
+       }
+       .maininput{
+        display: none;
+       }
+      
+      
+       .accountinfo{
+        font-size: 13px;
+       }
+      
+     
+     
+      }
+  
+      @media (max-width:377px) {
+  .adduserform{
+    width: 95%;
+  }
+  
+      }
+  
+      @media (max-width:350px) {
+        .logincenter{
+          left: 5%;
+         }
+      
+      }  
+  
+      @media (max-width:320px) {
+        .logincenter{
+          left: 3%;
+         }
+      
+      }  
+  
+      @media (max-width:300px) {
+        .logincenter{
+          left: 0%;
+         }
+      
+      }  

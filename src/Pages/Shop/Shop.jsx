@@ -11,11 +11,15 @@ const Shop = () => {
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Products/getProducts').then((res) => {
       setData(res.data.data);
+      
     }).catch((err) => {
       console.log(err);
     })
   }, [])
 
+  
+
+  console.log(datas);
   return (
     <div className='products-container'>
       {datas.map((data) =>

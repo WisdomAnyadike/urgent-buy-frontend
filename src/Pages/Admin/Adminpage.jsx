@@ -19,6 +19,8 @@ const Adminpage = () => {
 
 
   const [products, setProducts] = useState([])
+  
+  
   const [Users, setUsers] = useState([])
   const [Transactions, setTransactions] = useState([])
   const [Transactions1, setTransactions1] = useState([])
@@ -28,31 +30,36 @@ const Adminpage = () => {
   const [Transactions5, setTransactions5] = useState([])
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Products/getProducts').then((res) => setProducts(res.data.data)).catch((err) => console.log(err))
+   
   }, [products])
+
+  const [searcher , setSearcher] = useState('')
+ const fliteredProducts = products.filter(({productName})=> productName.toLowerCase().includes(searcher))
+ 
 
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/User/getUsers').then((res) => setUsers(res.data.data)).catch((err) => console.log(err))
-  }, [Users])
+  }, [])
 
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Transaction/getTransactions').then((res) => setTransactions(res.data.data)).catch((err) => console.log(err))
-  }, [Transactions])
+  }, [])
 
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Transaction/getTransactions1').then((res) => setTransactions1(res.data.data)).catch((err) => console.log(err))
-  }, [Transactions1])
+  }, [])
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Transaction/getTransactions2').then((res) => setTransactions2(res.data.data)).catch((err) => console.log(err))
-  }, [Transactions2])
+  }, [])
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Transaction/getTransactions3').then((res) => setTransactions3(res.data.data)).catch((err) => console.log(err))
-  }, [Transactions3])
+  }, [])
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Transaction/getTransactions4').then((res) => setTransactions4(res.data.data)).catch((err) => console.log(err))
-  }, [Transactions4])
+  }, [])
   useEffect(() => {
     axios.get('https://urgent-buy-backend.onrender.com/Api/Transaction/getTransactions5').then((res) => setTransactions5(res.data.data)).catch((err) => console.log(err))
-  }, [Transactions5])
+  }, [])
 
 
   const [Users1, setUsers1] = useState([])
@@ -508,12 +515,13 @@ const Adminpage = () => {
         <div className="d-flex align-items-start justify-content-between flex-column " style={{ width: "98%" }}>
           <div className="mt-2">
             <h6 style={{ fontWeight: "600" }}> Update Products</h6>
+            <input type='search' placeholder='Search by name' onChange={(e)=> setSearcher(e.target.value.toLowerCase())}/>
 
           </div>
 
           <div style={{ width: "100%", height: "fit-content" }}>
 
-            <ProductList products={products} />
+            <ProductList products={fliteredProducts} />
 
           </div>
 

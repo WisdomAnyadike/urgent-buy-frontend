@@ -3,15 +3,19 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../../Components/Product Card/ProductCard'
 import '/src/Pages/Shop/shop.styles.scss'
 import { ToastContainer } from 'react-toastify';
+import { Divider, Form, Radio, Skeleton, Space, Switch } from 'antd';
 
 const Shop = () => {
- 
-  let [datas, setData] = useState([])
+  const array = [0, 1, 2, 3, 4, 5 , 6 , 7]
+  const [datas, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     axios.get('https://urgent-buy-backend.onrender.com/Api/Products/getProducts').then((res) => {
+      setIsLoading(false)
       setData(res.data.data);
-      
+     
     }).catch((err) => {
       console.log(err);
     })
@@ -21,10 +25,23 @@ const Shop = () => {
 
   console.log(datas);
   return (
-    <div className='products-container'>
-      {datas.map((data) =>
-        <ProductCard key={data._id}  data={data} />
+    <div >
+    {
+      isLoading ?   <div className='w-100 d-flex flex-wrap justify-content-around ' style={{marginTop:"80px"}}>
+                    { array.map(() =>
+                        <Skeleton.Button className=' mb-2 ' active={true} style={{ width:'300px' ,  height: '320px', minWidth: "280px" }} />
+                    ) }
+
+                </div> : 
+                <div className='products-container'>
+                {datas.map((data) => 
+        <ProductCard key={data._id}  data={data} loading={isLoading} />
       )}
+                </div>
+      
+
+    }
+    
 <ToastContainer
   position='bottom-left'
 //   progressStyle={{

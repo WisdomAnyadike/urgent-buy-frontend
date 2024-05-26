@@ -3,20 +3,27 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 
+
+
+
 const ProductList = ({ products }) => {
   const [searchedProducts, setSearchedProducts] = useState([...products])
   const [isLoading, setIsLoading] = useState(false)
+  const [isloading2, setIsLoading2] = useState(false)
 
   const handleDelete = async (e, id) => {
+    setIsLoading2(true)
     e.preventDefault()
     let confirm = window.confirm('are you sure')
     if (confirm) {
       try {
         const res = await axios.post(`https://urgent-buy-backend.onrender.com/Api/Products/deleteProduct/${id}`)
         if (res.data.status == 'okay') {
+          setIsLoading2(false)
           alert(res.data.message)
         }
       } catch (error) {
+        setIsLoading2(false)
         alert(error.response.data.message)
       }
     }
@@ -53,7 +60,7 @@ const ProductList = ({ products }) => {
   }
 
   const handleSaveChanges = async () => {
-      setIsLoading(true)
+    setIsLoading(true)
 
     const productToEdit = products[editIndex];
 
@@ -62,21 +69,21 @@ const ProductList = ({ products }) => {
       productImage: editedProductImage,
       productPrice: editedProductPrice,
       productDescription: editedProductDescription,
-      productCategory: editedProductCategory 
-      }
+      productCategory: editedProductCategory
+    }
 
     try {
       const res = await axios.post(`https://urgent-buy-backend.onrender.com/Api/Products/editProduct/${productToEdit._id}`, productObject)
-    
+
       if (res.data.status == 'okay') {
         setIsLoading(false)
         alert(res.data.message)
-        
+
       }
     } catch (error) {
       setIsLoading(false)
       alert(error.response.data.message)
-     
+
     }
 
     // Implement the logic to save edited product details
@@ -161,7 +168,7 @@ const ProductList = ({ products }) => {
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" style={{width:"150px", height:"40px"}} class="btn btn-primary d-flex align-items-center justify-content-center" onClick={()=>handleSaveChanges(index)}>{isLoading ? <main>
+                              <button type="button" style={{ width: "150px", height: "40px" }} class="btn btn-primary d-flex align-items-center justify-content-center" onClick={() => handleSaveChanges(index)}>{isLoading ? <main>
                                 <svg class="sp" viewBox="0 0 128 128" width="28px" height="28px" xmlns="http://www.w3.org/2000/svg">
                                   <defs>
                                     <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
@@ -214,7 +221,11 @@ const ProductList = ({ products }) => {
                           </div>
                         </div>
                       </div>
-                      <button className='btn btn-danger mb-2 mt-2 w-25 ms-4' onClick={(e) => handleDelete(e, _id)} style={{ backgroundColor: "#dc3446" }}> Delete</button>
+                      <button className='btn btn-danger mb-2 mt-2 w-25 ms-4' onClick={(e) => handleDelete(e, _id)} style={{ backgroundColor: "#dc3446" }}> {isloading2 ?
+                        <div class="spinner-border text-light " style={{width:'23px' , height:"23px"}} role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                        : 'Delete'} </button>
                       <ToastContainer />
                     </div>
 

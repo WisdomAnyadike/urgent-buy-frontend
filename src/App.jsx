@@ -11,12 +11,14 @@ import Settings from './Pages/Settings /Settings'
 import Forgotpassword from './Pages/ForgotPassword/Forgotpassword'
 import Changepassword from './Pages/ChangePassword/Changepassword'
 import Adminpage from './Pages/Admin/Adminpage'
+import AdminLogin from './Pages/Admin/AdminLogin'
 
 const App = () => {
   return (
 
     <Routes>
     <Route path='/' element={<Home/>}>
+
     <Route index element={<DirectoryPage/>}/> 
     <Route path='/category/:category' element={<ShopPage/>}/> 
     <Route path='/signin' element={<SignIn/>}/> 
@@ -28,6 +30,7 @@ const App = () => {
    <Route path='/forgotpassword' element={<Forgotpassword/>}/> 
    <Route path='/changepassword' element={<Changepassword/>}/>
    <Route  path='/admin' element={<Adminpage/>} />
+   <Route  path='/adminLogin' element={<AdminLogin/>} />
     </Routes>
   )
 }

@@ -15,17 +15,9 @@ import Userslice, { fetchError, fetchingUser, setUserObj } from '../../Component
 
 
 const SignIn = () => {
+	const [isLoading, setIsLoading] = useState(false)
 	const dispatch = useDispatch()
-	
-	
 	const navigate = useNavigate()
-
-
-	
-const [isClicked , setIsClicked] = useState(false)
-const [isPressed , setIsPressed] = useState(false)	
-	
-	
 	const [isPassword, setIsText] = useState(true)
 
 
@@ -41,17 +33,20 @@ const [isPressed , setIsPressed] = useState(false)
 			Password: yup.string().matches('^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#*])[A-Za-z0-9@#*]{8,}$', 'Must be a strong password').required('Password is required')
 
 		}), onSubmit: async (value) => {
+			setIsLoading(true)
 			try {
 				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/signup', value)
 				if (res.data.status == 'success') {
-					setIsClicked(true)
+					setIsLoading(false)
 					alert(res.data.message)
 					const container = document.getElementById('container');
 					container.classList.remove("right-panel-active");
 				} else {
+					setIsLoading(false)
 					alert('Unable to create account')
 				}
 			} catch (error) {
+				setIsLoading(false)
 				alert(error.response.data.message)
 			}
 
@@ -72,12 +67,13 @@ const [isPressed , setIsPressed] = useState(false)
 
 		}), onSubmit: async (value) => {
 			dispatch(fetchingUser())
+			setIsLoading(true)
 
 			try {
 				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/login', value)
 				if (res.data.status == 'success') {
-					setIsPressed(true)
-					toast.success(res.data.message)			 
+					setIsLoading(false)
+					toast.success(res.data.message)
 					dispatch(setUserObj(res.data.findUser))
 					localStorage.setItem('urgentBuyToken', res.data.genToken)
 					setTimeout(() => {
@@ -85,11 +81,13 @@ const [isPressed , setIsPressed] = useState(false)
 					}, 5000)
 
 				} else {
+					setIsLoading(false)
 					toast.error(res.data.message)
 				}
 			} catch (error) {
 
 				if (error.response.data.status == 'notcreated') {
+					setIsLoading(false)
 					toast.error(error.response.data.message)
 					dispatch(fetchError(error.response.data.message))
 					setTimeout(() => {
@@ -98,6 +96,7 @@ const [isPressed , setIsPressed] = useState(false)
 					}, 5000)
 
 				} else {
+					setIsLoading(false)
 					toast.error(error.response.data.message)
 				}
 
@@ -122,13 +121,13 @@ const [isPressed , setIsPressed] = useState(false)
 
 
 
-	
 
 
-const userObj = useSelector(state=> state.Userslice.userObj)
-console.log(userObj);
-		
-			
+
+	const userObj = useSelector(state => state.Userslice.userObj)
+	console.log(userObj);
+
+
 
 
 
@@ -147,10 +146,12 @@ console.log(userObj);
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik.touched.Email && formik.errors.Email ? formik.errors.Email : ''}</small></small>
 
 
-				 <input onBlur={formik.handleBlur} name='Password' onChange={formik.handleChange} type={isPassword ? 'password' : 'text'} placeholder="Password" /> 	 
+					<input onBlur={formik.handleBlur} name='Password' onChange={formik.handleChange} type={isPassword ? 'password' : 'text'} placeholder="Password" />
 
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik.touched.Password && formik.errors.Password ? formik.errors.Password : ''}</small></small>
-					<button type='submit' disabled={isClicked ? true : false }  className='rounded mt-4 buttonClass' style={{ backgroundColor: "#4e04b2", border: '1px solid #4e04b2', minWidth: "150px" }} >Sign Up</button>
+					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center'  style={{ backgroundColor: "#4e04b2", border: '1px solid #4e04b2', minWidth: "150px" , height:"50px" }} >{isLoading ? <div class="spinner-border text-light" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div> : 'Sign Up'}</button>
 
 
 				</form>
@@ -165,11 +166,15 @@ console.log(userObj);
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Email && formik2.errors.Email ? formik2.errors.Email : ''}</small></small>
 					<input onBlur={formik2.handleBlur} name='Password' onChange={formik2.handleChange} type="password" placeholder="Password" />
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Password && formik2.errors.Password ? formik2.errors.Password : ''}</small></small>
-					<Link style={{ minWidth: "180px" }} to="/forgotpassword">Forgot your password?</Link>
-					<button type='submit'  disabled={isPressed ? true : false } className='rounded mt-4 buttonClass' style={{ minWidth: "160px" }} >Sign In</button>
-				<div style={{zIndex:90}}> <ToastContainer
+					<Link style={{ minWidth: "180px" }} className='m-0 p-0 mt-2' to="/adminLogin"> Login as Admin? </Link>
+					<Link style={{ minWidth: "180px" }} className='pb-0 mb-0' to="/forgotpassword">Forgot your password?</Link>
+
+					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ minWidth: "160px" ,height:'50px' }} >{isLoading ? <div class="spinner-border text-light" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div> : 'Sign In'}</button>
+					<div style={{ zIndex: 90 }}> <ToastContainer
 						zIndex={90}
-						position='top-left'
+						position='bottom-left'
 						autoClose={5000}
 						hideProgressBar={false}
 						newestOnTop={false}
@@ -177,7 +182,7 @@ console.log(userObj);
 						rtl={false}
 						pauseOnFocusLoss
 						draggable
-						pauseOnHover /></div>	
+						pauseOnHover /></div>
 				</form>
 			</div>
 			<div className="overlay-container">
@@ -185,12 +190,13 @@ console.log(userObj);
 					<div className="overlay-panel overlay-left">
 						<h1 > Welcome Back!</h1>
 						<p >To keep connected with us please login with your personal info</p>
-						<button className="ghost rounded buttonClass" style={{ minWidth: "150px" }} id="signIn" onClick={signuserin}>Sign In</button>
+						<button className="ghost rounded buttonClass" style={{ minWidth: "150px" }} id="signIn" onClick={signuserin}> Sign In</button>
 					</div>
 					<div className="overlay-panel overlay-right">
 						<h1>Hello, Friend!</h1>
 						<p >Enter your personal details and start journey with us</p>
-						<button className="ghost rounded buttonClass" style={{ minWidth: "150px" }} id="signUp" onClick={signuserup}>Sign Up</button>
+						<button className="ghost rounded buttonClass" style={{ minWidth: "150px" }} id="signUp" onClick={signuserup}>
+							Sign Up	 </button>
 					</div>
 				</div>
 			</div>

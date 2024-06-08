@@ -4,7 +4,7 @@
 }
 
 .nav-link {
-    color: #4a5568;
+    color: #303030;
 }
 
 .card {
@@ -14,6 +14,7 @@
 
 
 .card {
+    margin-top: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -22,14 +23,24 @@
     background-color: #fff;
     background-clip: border-box;
     border: 0 solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+   
+    
 }
 
+
+
 .card-body {
+    
     flex: 1 1 auto;
-    min-height: 1px;
+    min-height: 140px;
     padding: 1rem;
+  
+    
+    
 }
+
+
+
 
 .gutters-sm {
     margin-right: -8px;
@@ -57,5 +68,5 @@
 
 
  .nav-item .has-icon{
-    color: #401d7e;
+    color: #0a0b0b;
  }

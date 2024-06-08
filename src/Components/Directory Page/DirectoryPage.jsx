@@ -5,33 +5,33 @@ import CategoryItems from '../category-items/CategoryItems'
 const DirectoryPage = () => {
 const catergories = [
   {
-    title: 'Hats',
-    imageUrl: 'https://i.pinimg.com/originals/69/5a/1e/695a1eb459ecd6e6f7d0e04e64bfaadc.jpg',
+    title: 'Injections',
+    imageUrl: 'https://cdn.shopify.com/s/files/1/0070/7032/files/how-to-start-a-skincare-line-glow-oasis.jpg?v=1666895341',
     id: 1,
     linkUrl: 'shop/hats'
   },
   {
-    title: 'Jackets',
-    imageUrl: 'https://s3.amazonaws.com/images.nidacaserta.it/P23---BALENCIAGA---725275-TYD361000_4_P.JPG',
+    title: 'Serums',
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/flawlessskin-1589384044.png?crop=0.5xw:1xh;center,top&resize=640:*',
     id: 2,
     linkUrl: 'shop/jackets'
   },
   {
-    title: 'Trainers',
-    imageUrl: 'https://media.glamourmagazine.co.uk/photos/63064ad263d110ee64653af0/16:9/w_2580,c_limit/WHITE%20TRAINERS%20240822%20MAIN.jpg',
+    title: 'Masks',
+    imageUrl: 'https://www.forestessentialsindia.com/blog/wp-content/uploads/2021/12/1-1.jpg',
     id: 3,
     linkUrl: 'shop/sneakers'
   },
   {
     title: 'Womens',
-    imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+    imageUrl: 'https://www.revivalabs.com/wp-content/uploads/2023/07/power-of-daily-skincare-happy-african-american-la-2023-05-11-20-11-36-utc.jpg',
     size: 'large',
     id: 4,
     linkUrl: 'shop/womens'
   },
   {
     title: 'Mens',
-    imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+    imageUrl: 'https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2022/01/skin_care_different_skin_types_1296x728_header-1024x575.jpg?w=1155&h=1528',
     size: 'large',
     id: 5,
     linkUrl: 'shop/mens'
@@ -39,7 +39,7 @@ const catergories = [
 ]
 
   return (
-    <div className='directory-container'>
+    <div className='directory-container '>
 
     {catergories.map((category)=> 
     <CategoryItems key={category.id} category={category}  />

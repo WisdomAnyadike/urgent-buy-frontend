@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Userslice, { fetchError, fetchingUser, setUserObj } from '../../Components/Redux/Userslice'
+import Footer from '../../Components/Footer/Footer'
 
 
 
@@ -135,6 +136,7 @@ const SignIn = () => {
 
 
 		<div className="container " id="container">
+		
 			<div className="form-container sign-up-container">
 				<form onSubmit={formik.handleSubmit} action="#">
 					<h1 className='customer-text1' style={{ minWidth: "160px" }}>Create Account</h1>
@@ -149,7 +151,7 @@ const SignIn = () => {
 					<input onBlur={formik.handleBlur} name='Password' onChange={formik.handleChange} type={isPassword ? 'password' : 'text'} placeholder="Password" />
 
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik.touched.Password && formik.errors.Password ? formik.errors.Password : ''}</small></small>
-					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center'  style={{ backgroundColor: "#4e04b2", border: '1px solid #4e04b2', minWidth: "150px" , height:"50px" }} >{isLoading ? <div class="spinner-border text-light" role="status">
+					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ backgroundColor: "#000", border: '1px solid #4e04b2', minWidth: "150px", height: "50px" }} >{isLoading ? <div class="spinner-border text-light" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div> : 'Sign Up'}</button>
 
@@ -166,10 +168,10 @@ const SignIn = () => {
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Email && formik2.errors.Email ? formik2.errors.Email : ''}</small></small>
 					<input onBlur={formik2.handleBlur} name='Password' onChange={formik2.handleChange} type="password" placeholder="Password" />
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Password && formik2.errors.Password ? formik2.errors.Password : ''}</small></small>
-					<Link style={{ minWidth: "180px" }} className='m-0 p-0 mt-2' to="/adminLogin"> Login as Admin? </Link>
+				
 					<Link style={{ minWidth: "180px" }} className='pb-0 mb-0' to="/forgotpassword">Forgot your password?</Link>
 
-					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ minWidth: "160px" ,height:'50px' }} >{isLoading ? <div class="spinner-border text-light" role="status">
+					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ minWidth: "160px", height: '50px' }} >{isLoading ? <div class="spinner-border text-light" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div> : 'Sign In'}</button>
 					<div style={{ zIndex: 90 }}> <ToastContainer
@@ -200,6 +202,9 @@ const SignIn = () => {
 					</div>
 				</div>
 			</div>
+
+
+			
 		</div>
 
 

@@ -4,7 +4,7 @@ const BASEURL_MAIN = import.meta.env.VITE_ACCESS_URL_MAIN
 
 export const admitAdmin = async (payload) => {
   try {
-    const res = await axios.post(`${BASEURL}/Api/Admin/adminLogin`, payload)
+    const res = await axios.post(`${BASEURL_MAIN}/Api/Admin/adminLogin`, payload)
     if (res.data.status == 'okay') {
       return {
         status: 'success', message: res.data.message
@@ -80,21 +80,6 @@ export const createProduct = async(payload)=> {
 
 
 
-// try {
-//   const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/Products/createProduct', productObject)
-
-//   if (res.data.status === 'okay') {
-//     setIsLoading(false)
-//     alert(res.data.message)
-
-
-//   }
-
-// } catch (error) {
-//   setIsLoading(false)
-//   alert(error.response.data.message)
-
-// }
 
 
 

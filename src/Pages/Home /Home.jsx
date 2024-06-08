@@ -7,13 +7,17 @@ import Footer from '../../Components/Footer/Footer'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import Animate from '../../Components/Aos/animate'
+
+
+
 
 
 
 
 const Home = () => {
   const location = useLocation()
-  const [footer , setFooter] = useState(false)
+  const [footer, setFooter] = useState(false)
 
   useEffect(() => {
     if (location.pathname == '/signin') {
@@ -24,15 +28,24 @@ const Home = () => {
   }, [location])
 
 
- 
-  
+
+
+
+
+
+
   return (
-    <div>
- <NavbarComponent/>
-    <Outlet/>
-   {footer && <Footer/> } 
-  
-    </div>
+    <Animate>
+
+
+      <div>
+        <NavbarComponent />
+        <Outlet />
+        {footer && <Footer />}
+
+      </div>
+
+    </Animate>
   )
 }
 

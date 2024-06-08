@@ -14,6 +14,7 @@ import './index.scss'
 import { Provider } from 'react-redux'
 import { Store, persistor } from './Components/Redux/Store.jsx'
 import { PersistGate } from 'redux-persist/integration/react'
+import 'aos/dist/aos.css';
 
 
 

@@ -31,8 +31,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #fd1f6f;
-	background-color: #fd1f6f;
+	border: 1px solid black;
+	background-color: rgba(0, 0, 0, 0.823);
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -151,9 +151,9 @@ background-color: whitesmoke;
 }
 
 .overlay {
-	background: #fd1f6f;
-	background: -webkit-linear-gradient(to right, #4e04b2, #fd1f6f);
-	background: linear-gradient(to right, #4e04b2, #fd1f6f);
+	background: #26141b;
+	background: -webkit-linear-gradient(to right, #1f1e20, #040303);
+	background: linear-gradient(to right, #212121, #000000);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

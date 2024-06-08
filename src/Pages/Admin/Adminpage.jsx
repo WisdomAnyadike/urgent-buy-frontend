@@ -141,9 +141,9 @@ const Adminpage = () => {
   let sortedTransactions
   if (MonthlyTransactions) {
     sortedTransactions = MonthlyTransactions.sort((a, b) => {
-      if (a.transactionArr.length < b.transactionArr.length) {
+      if (a.transactionValue < b.transactionValue) {
         return 1
-      } else if (a.transactionArr.length > b.transactionArr.length) {
+      } else if (a.transactionValue > b.transactionValue) {
         return -1
       } else {
         return 0
@@ -373,14 +373,13 @@ setCustomer(sortedTransactions[0])
                 className=" rounded  flex-column p-2 d-flex shadow align-items-center justify-content-start mb-3"
                 style={{ width: "95%", minWidth: '300px', height: "625px", backgroundColor: "white" }}
               >
-                <div className='rounded-circle   bg-dark mt-5 mb-5' style={{ width: '270px', height: '270px' }} >
+                <div className='rounded-circle bg-dark mt-5 mb-5' style={{ width: '270px', height: '270px' }} >
                   <img src={!customer || !customer.user.Picture  ? 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'  : customer.user.Picture} width={"100%"} height={"100%"} className='rounded-circle' />
                 </div>
                 <h2 className='w-50' style={{ fontFamily: 'fantasy' }} > Most Valuable Customer  </h2>
-                <div className='align-left bg-dark text-light p-3 rounded d-flex flex-column '  >
+                <div className='align-left bg-dark text-light p-3 rounded d-flex flex-column  ' style={{ minWidth:'270px'}} >
                    <h5> Name : { !customer  ? 'loading...'  : customer?.user.FullName }  </h5>
-                  <span> Total expenses: { !customer  ? 'loading...'  : `N${customer.transactionArr.reduce( (a,b) => 
-                  Number(a.transactionAmount) +  Number(b.transactionAmount)  )}` } </span>
+                  <span> Total expenses: { !customer   ? 'loading...'  : `N${customer?.transactionValue}` } </span>
                   <span> Most Purchased Product :  </span>
                 </div>
 

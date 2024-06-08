@@ -21,3 +21,29 @@
 // .links{
 //     color: #4e05b2;
 // }
+
+.ads{
+    background-color: black;
+    margin-top: 70px;
+    width: 100%;
+    height: 35px;
+    min-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: white;
+    font-size: 12px;
+}
+
+.images{
+    object-fit: fill;
+}
+
+
+@media (max-width: '400px') {
+    .ads{
+        flex-direction: column;
+    }
+    
+}

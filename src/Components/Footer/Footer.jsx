@@ -9,54 +9,54 @@ const Footer = () => {
   return (
 
 
-    <footer className="text-center  text-dark foot w-100 p-0 " style={{fontWeight:"bolder"}} >
-
-
-      
-
-        <div data-aos="slide-right" className="text-center d-flex justify-content-center pt-4 flex-wrap ">
-
-          <div  className="col-md-2 mb-2 " style={{ width: "200px"  }}>
-            <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-dark">About us</a>
-            </h6>
-          </div>
+    <footer className="text-center  text-dark foot w-100 p-0 " style={{ fontWeight: "bolder" }} >
 
 
 
-          <div className="col-md-2 mb-2" style={{ width: "200px" }}>
-            <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-dark">Products</a>
-            </h6>
-          </div>
 
+      <div data-aos="slide-right" className="text-center d-flex justify-content-center pt-4 flex-wrap ">
 
-
-          <div className="col-md-2 mb-2" style={{ width: "200px" }}>
-            <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-dark">Awards</a>
-            </h6>
-          </div>
-
-
-
-          <div className="col-md-2 mb-2" style={{ width: "200px" }}>
-            <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-dark">Help</a>
-            </h6>
-          </div>
-
-
-
-          <div className="col-md-2 mb-2" style={{ width: "200px" }}>
-            <h6 className="text-uppercase font-weight-bold">
-              <a href="#!" className="text-dark">Contact</a>
-            </h6>
-          </div>
-
+        <div className="col-md-2 mb-2 " style={{ width: "200px" }}>
+          <h6 className="text-uppercase font-weight-bold">
+            <a href="#!" className="text-dark">About us</a>
+          </h6>
         </div>
 
-    
+
+
+        <div className="col-md-2 mb-2" style={{ width: "200px" }}>
+          <h6 className="text-uppercase font-weight-bold">
+            <a href="#!" className="text-dark">Products</a>
+          </h6>
+        </div>
+
+
+
+        <div className="col-md-2 mb-2" style={{ width: "200px" }}>
+          <h6 className="text-uppercase font-weight-bold">
+            <a href="#!" className="text-dark">Awards</a>
+          </h6>
+        </div>
+
+
+
+        <div className="col-md-2 mb-2" style={{ width: "200px" }}>
+          <h6 className="text-uppercase font-weight-bold">
+            <a href="#!" className="text-dark">Help</a>
+          </h6>
+        </div>
+
+
+
+        <div className="col-md-2 mb-2" style={{ width: "200px" }}>
+          <h6 className="text-uppercase font-weight-bold">
+            <a href="#!" className="text-dark">Contact</a>
+          </h6>
+        </div>
+
+      </div>
+
+
 
 
       <hr className='my-4' />
@@ -89,7 +89,7 @@ const Footer = () => {
         <a href="" className="text-dark me-4">
           <i className="fab fa-instagram"></i>
         </a>
-     
+
       </section>
 
 
@@ -97,9 +97,9 @@ const Footer = () => {
 
 
       <div
-       data-aos="zoom-out-up"
+
         className="text-center d-flex align-items-center justify-content-center "
-        style={{ backgroundColor: "black"  , height : '70px'}}
+        style={{ backgroundColor: "black", height: '70px' }}
       >
 
         <p className='m-0 p-0 text-white'>

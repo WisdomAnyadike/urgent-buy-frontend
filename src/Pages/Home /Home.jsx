@@ -51,7 +51,7 @@ const Home = () => {
       <div>
         {footer && <>
           <Ads />
-          <div className='findus border'>
+          <div className='findus border m-0 p-0'>
             <Dropdown>
               <Dropdown.Toggle variant="light" className='d-flex align-items-center justify-content-between' id="dropdown-basic" style={{ fontSize: "14px" }}>
                 <Icon icon="mdi:instagram" width="24" height="24" style={{ color: '#000' }} /> <b className='ms-2'>Find Us </b>
@@ -67,8 +67,8 @@ const Home = () => {
 
           </div>
 
-
-          <Carousel data-aos="fade-up" activeIndex={index} onSelect={handleSelect}>
+          <div className='w-100 p-0 m-0'>
+          <Carousel style={{width:"100%"}} data-aos="fade-up" activeIndex={index} onSelect={handleSelect}>
             <Carousel.Item>
               <img className='images' width={'100%'} height={'540px'} src="https://baseofsweden.com/cdn/shop/articles/clean_girl_makeup_2_2200_x_1080_px_2.png?v=1677068969" alt="" />
               <Carousel.Caption>
@@ -89,10 +89,11 @@ const Home = () => {
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
+          </div>
 
 
 
-          <div data-aos="fade-up" className='ads' style={{ height: "200px" }}>
+          <div data-aos="fade-up" className='ads w-100 ' style={{ height: "200px" }}>
             <h3 data-aos="fade-up-right" style={{ fontFamily: "cursive" }}>  Chemical Free </h3>
             <h3 data-aos="flip-left" style={{ fontFamily: "cursive" }}>  Reliable </h3>
             <h3 data-aos="fade-down-left" style={{ fontFamily: "cursive" }}>   All over the world</h3>

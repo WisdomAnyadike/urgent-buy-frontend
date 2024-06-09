@@ -39,7 +39,7 @@ const catergories = [
 ]
 
   return (
-    <div className='directory-container '>
+    <div className='directory-container ' data-aos="slide-up">
 
     {catergories.map((category)=> 
     <CategoryItems key={category.id} category={category}  />

@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import ProductCard from '../../Components/Product Card/ProductCard'
 import { ToastContainer } from 'react-toastify';
 import { Skeleton } from 'antd';
+import Ads from '../../Components/ad/ads';
+
 
 
 const ShopPage = () => {
@@ -23,7 +25,8 @@ const ShopPage = () => {
   console.log(category);
   return (
     <div className='products-container'>
-      <h4 className='w-100 ms-3 mb-2 d-flex align-items-center justify-content-start'>{category} </h4>
+      <h4 className='w-100  mb-0 d-flex border align-items-center justify-content-center'> {category} </h4>
+      <Ads/>
 
       {
         isLoading ? <div className='w-100 d-flex flex-wrap justify-content-around mt-2' >

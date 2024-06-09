@@ -36,11 +36,16 @@ const Shop = () => {
             )}
 
           </div> :
+
+
             <div className='products-container mt-0'>
+
               {datas.map((data) =>
                 <ProductCard key={data._id} data={data} loading={isLoading} />
               )}
             </div>
+
+
 
 
         }

@@ -14,7 +14,7 @@ const Footer = () => {
 
 
 
-      <div data-aos="slide-right" className="text-center d-flex justify-content-center pt-4 flex-wrap ">
+      <div data-aos="slide-right" className="text-center d-flex border-top justify-content-center pt-4 flex-wrap ">
 
         <div className="col-md-2 mb-2 " style={{ width: "200px" }}>
           <h6 className="text-uppercase font-weight-bold">

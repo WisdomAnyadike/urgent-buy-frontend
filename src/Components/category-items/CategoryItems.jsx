@@ -13,13 +13,13 @@ const CategoryItems = ({ category: { title, imageUrl, id } }) => {
 
   return (
 
-    <div data-aos="zoom-in" onClick={() => seeMore(title)} className='category-container ' style={{
+    <div data-aos="fade-up" onClick={() => seeMore(title)} className='category-container ' style={{
       backgroundImage: `url(${imageUrl})`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
 
     }} >
-      <div className='category-body-container '
+      <div className='category-body-container' data-aos="zoom-in"
       >
         <h2 className='bg-light'> {title} </h2>
         <p className='bg-light mt-2'> Shop Now</p>

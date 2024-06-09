@@ -12,6 +12,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Icon } from '@iconify/react';
 import Carousel from 'react-bootstrap/Carousel';
 import Ads from '../../Components/ad/ads'
+import Reviews from '../../Components/reviews/reviews'
 
 
 
@@ -22,12 +23,21 @@ import Ads from '../../Components/ad/ads'
 const Home = () => {
   const location = useLocation()
   const [footer, setFooter] = useState(false)
+  const [body, setBody] = useState(false)
 
   useEffect(() => {
-    if (location.pathname == '/signin') {
+    if (location.pathname == '/signin' ) {
       setFooter(false)
     } else {
       setFooter(true)
+    }
+  }, [location])
+
+  useEffect(() => {
+    if (location.pathname !== '/' && location.pathname !== '/dashboard' ) {
+      setBody(false)
+    } else {
+      setBody(true)
     }
   }, [location])
 
@@ -49,7 +59,7 @@ const Home = () => {
 
 
       <div>
-        {footer && <>
+        {body && <>
           <Ads />
           <div className='findus border m-0 p-0'>
             <Dropdown>
@@ -98,12 +108,20 @@ const Home = () => {
             <h3 data-aos="flip-left" style={{ fontFamily: "cursive" }}>  Reliable </h3>
             <h3 data-aos="fade-down-left" style={{ fontFamily: "cursive" }}>   All over the world</h3>
           </div>
+
+
+    
+
         </>}
 
 
 
         <NavbarComponent />
         <Outlet />
+        <div className='mt-5'>
+        {body && <Reviews/>}
+        </div>
+       
         {footer && <Footer />}
 
       </div>

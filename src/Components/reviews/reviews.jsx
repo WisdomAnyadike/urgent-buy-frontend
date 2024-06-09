@@ -4,7 +4,7 @@ import "/src/Components/reviews/reviews.styles.scss"
 const Reviews = () => {
     return (
         <>
-            <h1 className='d-flex justify-content-center mb-4 reviewText '> Reviews </h1>
+            <h1 className='d-flex justify-content-center mb-4 reviewText'> Reviews </h1>
             <div className="contained w-100 mt-0">
 
                 <div className="box" data-aos="flip-up">

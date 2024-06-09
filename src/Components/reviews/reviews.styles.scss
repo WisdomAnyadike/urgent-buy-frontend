@@ -8,7 +8,7 @@
 }
 
 html {
-  font-size: 82.5%;
+  font-size: 62.5%;
 }
 
 .reviewText{
@@ -98,11 +98,7 @@ html {
   font-weight: 500;
 }
 
-@media (max-width: 600px) {
-.stars{
-  margin: 0;
-}
-}
+
 
 @media (max-width: 600px) {
   .contained .box:hover .content {
@@ -112,4 +108,16 @@ html {
     transform: translate(0, -3.5rem);
   }
 }
+
+@media (max-width: 600px) {
+  .stars{
+    margin: 0;
+  }
+  .contained{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  }
 

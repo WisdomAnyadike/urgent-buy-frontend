@@ -23,7 +23,7 @@ function MydModalWithGrid(props) {
 
     const postIt = async () => {
         try {
-            const res = await axios.post('http://localhost:4000/Api/Transaction/createTransaction', {
+            const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/Transaction/createTransaction', {
                 transactionAmount: props.total,
                 transactionUser: userObj.FullName,
                 transactionTag: tag,

@@ -41,7 +41,7 @@ const Settings = () => {
   useEffect(() => {
     const fetchUserTransactions = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/Api/Transaction/getUserTransactions', {
+        const res = await axios.get('https://urgent-buy-backend.onrender.com/Api/Transaction/getUserTransactions', {
           headers: {
             'Authorization': `Bearer ${token}`,
             "content-type": "application/json"

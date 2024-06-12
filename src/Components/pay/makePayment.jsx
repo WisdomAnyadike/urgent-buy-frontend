@@ -99,7 +99,7 @@ function MydModalWithGrid(props) {
             </Modal.Header>
             <Modal.Body >
                 <h4>Scan to Pay</h4>
-                <img width={'300px'} height={'400px'} src="/src/assets/WhatsApp Image 2024-06-11 at 18.09.22.jpeg" alt="" />
+                <img width={'300px'} height={'400px'} src="src/assets/WhatsApp Image 2024-06-11 at 18.09.22.jpeg" alt="" />
                 <div>
                     <input type="text" onChange={(e) => setTag(e.target.value)} className='mt-0 w-50 rounded mb-2' style={{ fontSize: '14px' }} placeholder='Enter your cashapp tag' />
                     <b className='text-danger d-block mb-2 ' style={{ fontSize: '12px' }}>Ensure you provide your cash-app tag or risk losing your payment </b>

@@ -26,14 +26,6 @@ const Footer = () => {
 
         <div className="col-md-2 mb-2" style={{ width: "200px" }}>
           <h6 className="text-uppercase font-weight-bold">
-            <a href="#!" className="text-dark">Products</a>
-          </h6>
-        </div>
-
-
-
-        <div className="col-md-2 mb-2" style={{ width: "200px" }}>
-          <h6 className="text-uppercase font-weight-bold">
             <a href="#!" className="text-dark">Awards</a>
           </h6>
         </div>
@@ -48,11 +40,7 @@ const Footer = () => {
 
 
 
-        <div className="col-md-2 mb-2" style={{ width: "200px" }}>
-          <h6 className="text-uppercase font-weight-bold">
-            <a href="#!" className="text-dark">Contact</a>
-          </h6>
-        </div>
+       
 
       </div>
 
@@ -67,8 +55,6 @@ const Footer = () => {
           <div className="col-lg-8">
             <p>
               Welcome to UrgentBuy, your ultimate destination for trendy and affordable clothing!  Enjoy hassle-free shopping with fast delivery and easy returns.  Follow us on social media for style inspiration and exclusive discounts. Elevate your wardrobe with UrgentBuy today!
-
-
             </p>
           </div>
         </div>

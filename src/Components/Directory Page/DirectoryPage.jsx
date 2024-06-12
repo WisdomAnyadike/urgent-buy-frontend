@@ -31,7 +31,7 @@ const catergories = [
   },
   {
     title: 'Mens',
-    imageUrl: 'https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2022/01/skin_care_different_skin_types_1296x728_header-1024x575.jpg?w=1155&h=1528',
+    imageUrl: 'https://assets.nutrisense.io/62e18da95149ec2ee0d87b5b/65971a24ecda8be4af55505b_64b5c98d134cf435f44d882f_643cf6b3637c322d630fb241_thumbnail-skincare-tips-for-men.webp',
     size: 'large',
     id: 5,
     linkUrl: 'shop/mens'

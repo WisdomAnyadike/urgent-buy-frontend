@@ -78,6 +78,7 @@
     transition: all 0.3s ease 0s;
 }
 .product-grid:hover .add-to-cart{ bottom: 0; }
+
 .product-grid .product-content{
     background: #fff;
     padding: 15px;
@@ -107,4 +108,10 @@
 }
 @media screen and (max-width: 990px){
     .product-grid{ margin-bottom: 30px; }
+}
+
+
+@media screen and (max-width: 790px){
+    .product-grid .add-to-cart{
+        bottom: 0; }
 }

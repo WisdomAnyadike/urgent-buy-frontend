@@ -4,7 +4,7 @@ import { formatDistanceToNow } from 'date-fns';
 function TimeAgo({ timestamp }) {
   return (
     <span>
-      {formatDistanceToNow(new Date(timestamp), { addSuffix: true })}
+     <small> {formatDistanceToNow(new Date(timestamp), { addSuffix: true })} </small> 
     </span>
   );
 }

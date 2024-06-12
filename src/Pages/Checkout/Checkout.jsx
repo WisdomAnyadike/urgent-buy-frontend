@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import '/src/Pages/Checkout/checkout.styles.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { decreaseQuantity, emptyCart, removeItem, setCartArr } from '../../Components/Redux/Dropdownslice'
-import Button from '../../Components/Buttons/Button'
-import { PaystackButton } from 'react-paystack'
-import axios from 'axios'
+import { decreaseQuantity, removeItem, setCartArr } from '../../Components/Redux/Dropdownslice'
+import Button from 'react-bootstrap/Button';
+// import { PaystackButton } from 'react-paystack'
 import Ads from '../../Components/ad/ads'
+import MydModalWithGrid from '../../Components/pay/makePayment'
 
 
 
 
 const Checkout = () => {
 
-
+  const [modalShow, setModalShow] = useState(false);
 
   const dispatch = useDispatch()
 
@@ -29,52 +29,50 @@ const Checkout = () => {
 
   const isEmpty = cartArr.length === 0;
 
-  const postIt = async (ref) => {
-    try {
-      const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/Transaction/createTransaction', { transactionReference: ref.reference })
+  
 
-      if (res.data.status == 'okay') {
-        alert('success')
-      } else {
-        alert('failed')
-      }
-    } catch (error) {
-      console.log(error);
+  function makeOrder() {
+     if(arr.length === 0){
+      alert('Cant make an empty order')
+      return
+     }
+
+    let confirm = window.confirm('are you sure?')
+    if (confirm) {
+      setModalShow(true)
     }
 
-
   }
-
 
 
   let total = arr.reduce((a, b) => a + (b.productPrice * b.quantity), 0)
 
-  const publicKey = 'pk_test_9a558288d1670a641dafa6f4e899ddb24f2fe749'; // Your Paystack public key
-  const amount = total * 100;
+  // const publicKey = 'pk_test_9a558288d1670a641dafa6f4e899ddb24f2fe749'; // Your Paystack public key
+  // const amount = total * 100;
 
 
 
-  const componentProps = {
-    email: Email,
-    amount,
-    phone: "+2348164934974",
-    metadata: {
-      FullName: FullName,
+  // const componentProps = {
+  //   email: Email,
+  //   amount,
+  //   phone: "+2348164934974",
+  //   metadata: {
+  //     FullName: FullName,
 
-    },
-    publicKey,
-    name: FullName,
-    text: "Pay with Paystack",
-    onSuccess: (ref) => {
-      console.log(ref);
-      dispatch(emptyCart());
-      postIt(ref)
+  //   },
+  //   publicKey,
+  //   name: FullName,
+  //   text: "Pay with Paystack",
+  //   onSuccess: (ref) => {
+  //     console.log(ref);
+  //     dispatch(emptyCart());
+  //     postIt(ref)
 
-    }
-    ,
-    onClose: () => alert("Wait! You need this clothes, don't go!!!!"),
+  //   }
+  //   ,
+  //   onClose: () => alert("Wait! You need this clothes, don't go!!!!"),
 
-  }
+  // }
 
 
   function decreaseIt(_id, productName, productImage, quantity, productPrice) {
@@ -102,7 +100,7 @@ const Checkout = () => {
             <div className="card-body" data-aos="fade-zoom-in">
 
               {isEmpty ? <small> Your Cart is Empty </small> : arr.map(({ _id, productName, productImage, quantity, productPrice }) =>
-                <div className="row mb-2">
+                <div key={_id} className="row mb-2">
                   <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
 
                     <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
@@ -206,6 +204,7 @@ const Checkout = () => {
                   className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   Products
                   <span>N{total}.00</span>
+
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center px-0">
                   Shipping
@@ -226,10 +225,22 @@ const Checkout = () => {
 
 
 
-              <PaystackButton className="paystack-button rounded paycolor" {...componentProps} />
+              {/* <PaystackButton className="paystack-button rounded paycolor" {...componentProps} /> */}
+
+
+
+
+
+              <Button variant="primary" onClick={() => makeOrder()}>
+                Click here to make an order
+              </Button>
+
+              <MydModalWithGrid arr={arr} total={total} show={modalShow} onHide={() => setModalShow(false)} />
+
 
 
             </div>
+            {/* <CashAppPayComponent amount={total}/> */}
           </div>
         </div>
       </div>

@@ -136,24 +136,24 @@ const Adminpage = () => {
   }
 
 
- 
- useEffect(() => {
-  let sortedTransactions
-  if (MonthlyTransactions) {
-    sortedTransactions = MonthlyTransactions.sort((a, b) => {
-      if (a.transactionValue < b.transactionValue) {
-        return 1
-      } else if (a.transactionValue > b.transactionValue) {
-        return -1
-      } else {
-        return 0
-      }
-    })
 
-  }
-setCustomer(sortedTransactions[0])
- }, [MonthlyTransactions])
- 
+  useEffect(() => {
+    let sortedTransactions
+    if (MonthlyTransactions) {
+      sortedTransactions = MonthlyTransactions.sort((a, b) => {
+        if (a.transactionValue < b.transactionValue) {
+          return 1
+        } else if (a.transactionValue > b.transactionValue) {
+          return -1
+        } else {
+          return 0
+        }
+      })
+
+    }
+    setCustomer(sortedTransactions[0])
+  }, [MonthlyTransactions])
+
 
 
   const handleSubmit = async (e) => {
@@ -200,7 +200,21 @@ setCustomer(sortedTransactions[0])
     }]
   };
 
-
+  let confirmStatus = async (id, status) => {
+    let confirm = window.confirm(`${status === 'success' ? 'accept' : 'reject'},are you sure?`)
+    if (confirm) {
+      try {
+        const res = await axios.post(`http://localhost:4000/Api/Transaction/confirmStatus/${id}`, { status })
+        if (res.data.status === 'okay') {
+          alert('successfully updated')
+        } else {
+          alert('failed')
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
 
 
@@ -247,6 +261,21 @@ setCustomer(sortedTransactions[0])
 
     // Add more data points as needed
   ];
+
+  const [pending, setPending] = useState([])
+
+  useEffect(() => {
+    setPending(Transactions.sort((a, b) => {
+      if (a.createdAt > b.createdAt) {
+        return 1
+      } else if (a.createdAt < b.createdAt) {
+        return -1
+      } else {
+        return 0
+      }
+    }).filter((product) => product.transactionStatus === 'pending'))
+  }, [Transactions])
+
 
 
 
@@ -374,12 +403,12 @@ setCustomer(sortedTransactions[0])
                 style={{ width: "95%", minWidth: '300px', height: "625px", backgroundColor: "white" }}
               >
                 <div className='rounded-circle bg-dark mt-5 mb-5' style={{ width: '270px', height: '270px' }} >
-                  <img src={!customer || !customer.user.Picture  ? 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'  : customer.user.Picture} width={"100%"} height={"100%"} className='rounded-circle' />
+                  <img src={!customer || !customer.user.Picture ? 'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg' : customer.user.Picture} width={"100%"} height={"100%"} className='rounded-circle' />
                 </div>
                 <h2 className='w-50' style={{ fontFamily: 'fantasy' }} > Most Valuable Customer  </h2>
-                <div className='align-left bg-dark text-light p-3 rounded d-flex flex-column  ' style={{ minWidth:'270px'}} >
-                   <h5> Name : { !customer  ? 'loading...'  : customer?.user.FullName }  </h5>
-                  <span> Total expenses: { !customer   ? 'loading...'  : `N${customer?.transactionValue}` } </span>
+                <div className='align-left bg-dark text-light p-3 rounded d-flex flex-column  ' style={{ minWidth: '270px' }} >
+                  <h5> Name : {!customer ? 'loading...' : customer?.user.FullName}  </h5>
+                  <span> Total expenses: {!customer ? 'loading...' : `N${customer?.transactionValue}`} </span>
                   <span> Most Purchased Product :  </span>
                 </div>
 
@@ -411,7 +440,7 @@ setCustomer(sortedTransactions[0])
                     <div class="position-relative card table-nowrap table-card" style={{ overflowY: "scroll", height: "550px" }}>
                       <div class="card-header align-items-center">
                         <h5 class="mb-0">Latest Transactions</h5>
-                        <p class="mb-0 small text-muted">0 Pending</p>
+                        <p class="mb-0 small text-muted">{pending.length} Pending</p>
                       </div>
                       <div class="table-responsive">
                         <table class="table mb-0">
@@ -449,7 +478,7 @@ setCustomer(sortedTransactions[0])
                                   </div>
                                 </td>
                                 <td>
-                                  <span class="badge fs-6 fw-normal bg-tint-warning text-success">{transactionStatus}</span>
+                                  <span class={transactionStatus === 'success' ? 'text-success badge fs-6 fw-normal bg-tint-warning' : 'text-danger badge fs-6 fw-normal bg-tint-warning'}>{transactionStatus}</span>
                                 </td>
                               </tr>
 
@@ -474,6 +503,71 @@ setCustomer(sortedTransactions[0])
             </div>
 
 
+
+
+
+
+
+
+          </div>
+          <div className=" mt-3 align-items-center justify-content-center p-2 shadow mb-2 rounded " style={{ width: "95%", backgroundColor: "white", height: "fit-content" }}>
+
+
+
+            <div class="table-responsive">
+              <table class="table w-100 mb-0">
+                <thead class="small text-uppercase bg-body text-muted">
+                  <tr>
+                    <th >Transaction ref</th>
+                    <th > Time </th>
+                    <th > Tag </th>
+                    <th >Amount</th>
+                    <th >order</th>
+                    <th >Status</th>
+                  </tr>
+                </thead>
+                <tbody>{
+                  pending.length === 0 ?  'no pending transactions' :
+                
+                  pending.map(({ _id, transactionAmount, transactionOrder, transactionStatus, transactionReference, transactionTag, createdAt }) =>
+
+
+                    <tr key={_id} class="align-middle">
+                      <td >
+                        {transactionReference}
+                      </td>
+                      <td>{<TimeAgo timestamp={createdAt} />}</td>
+                      <td>{transactionTag}</td>
+                      <td >
+                        <div class="d-flex align-items-center">
+                          <span><i class="fa fa-arrow-up text-success me-1" aria-hidden="true"></i></span>
+                          <span>N{transactionAmount}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="badge fs-6 fw-normal bg-tint-warning text-success">{transactionOrder}</span>
+                      </td>
+                      <td>
+                        <span className={transactionStatus === 'success' ? 'text-success badge fs-6 fw-normal bg-tint-warning' : 'text-danger badge fs-6 fw-normal bg-tint-warning'} >{transactionStatus}</span>
+                      </td>
+                      <td>
+                        <button onClick={() => confirmStatus(_id, 'success')} class="badge fs-6 fw-normal bg-success"> accept </button>
+                      </td>
+                      <td>
+                        <button onClick={() => confirmStatus(_id, 'failed')} class="badge fs-6 fw-normal bg-danger"> reject </button>
+                      </td>
+                    </tr>
+
+                  )
+                  
+                  }
+
+                
+
+
+                </tbody>
+              </table>
+            </div>
 
 
 

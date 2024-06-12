@@ -14,6 +14,7 @@
     "@iconify/icons-ic": "^1.2.13",
     "@iconify/react": "^4.1.1",
     "@reduxjs/toolkit": "^2.2.1",
+    "@square/web-sdk": "^2.0.1",
     "@tanstack/react-query": "^5.37.1",
     "antd": "^5.15.2",
     "aos": "^2.3.4",

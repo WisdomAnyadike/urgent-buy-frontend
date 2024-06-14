@@ -8,10 +8,12 @@ import { emptyCart } from '../../Components/Redux/Dropdownslice'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import Preloader from '../loader/loader';
 
 function MydModalWithGrid(props) {
 
     const dispatch = useDispatch()
+    const [loading, setIsLoading] = useState(false);
 
     const cartArr = useSelector(state => state.DropSlicer.cartArr)
 
@@ -20,9 +22,11 @@ function MydModalWithGrid(props) {
     const userObj = useSelector(state => state.Userslice.userObj)
 
     const navigate = useNavigate()
+    let cashAppRegex = /^\$/
 
 
     const postIt = async () => {
+        setIsLoading(true)
         try {
             const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/Transaction/createTransaction', {
                 transactionAmount: props.total,
@@ -33,17 +37,20 @@ function MydModalWithGrid(props) {
             })
 
             if (res.data.status === 'okay') {
+                setIsLoading(false)
                 toast.success('success , click on payment status')
 
                 setTimeout(()=> {
-                    dispatch(emptyCart());
+                    dispatch(emptyCart());  
                     navigate('/settings')
                 },2000)
                
             } else {
+                setIsLoading(false)
                 toast.error('failed, try again')
             }
         } catch (error) {
+            setIsLoading(false)
             console.log(error);
         }
 
@@ -67,6 +74,11 @@ function MydModalWithGrid(props) {
         if (!tag) {
             alert('missing tag')
             return
+        }
+
+        if (!cashAppRegex.test(tag)) {
+            alert('invalid tag format')
+            return 
         }
 
         if (!tag || !order || !props.total || !userObj.FullName) {
@@ -122,10 +134,10 @@ function MydModalWithGrid(props) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" onClick={() => post()} >
-                    Confirm Order
+                <Button variant='dark' style={{ backgroundColor: "#000", color: 'white', width: "130px", height: "37px" }} className='d-flex align-items-center justify-content-center'  disabled={loading} onClick={() => post()} >
+                   {loading ? <Preloader/> : 'Confirm Order' } 
                 </Button>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button variant='dark' style={{ backgroundColor: "#000", color: 'white', width: "90px", height: "37px" }} onClick={props.onHide}>Close</Button>
                 <ToastContainer
                     position='top-right'
                     progressStyle={{

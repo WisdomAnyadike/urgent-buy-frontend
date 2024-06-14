@@ -14,6 +14,7 @@ import MydModalWithGrid from '../../Components/pay/makePayment'
 const Checkout = () => {
 
   const [modalShow, setModalShow] = useState(false);
+ 
 
   const dispatch = useDispatch()
 
@@ -29,18 +30,17 @@ const Checkout = () => {
 
   const isEmpty = cartArr.length === 0;
 
-  
+
 
   function makeOrder() {
-     if(arr.length === 0){
+    if (arr.length === 0) {
       alert('Cant make an empty order')
       return
-     }
-
-    let confirm = window.confirm('are you sure?')
-    if (confirm) {
-      setModalShow(true)
     }
+
+
+    setModalShow(true)
+
 
   }
 
@@ -231,7 +231,7 @@ const Checkout = () => {
 
 
 
-              <Button variant="primary" onClick={() => makeOrder()}>
+              <Button variant="dark" onClick={() => makeOrder()}>
                 Click here to make an order
               </Button>
 

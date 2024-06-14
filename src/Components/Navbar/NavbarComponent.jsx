@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import Carticon from "../Cart-icon/Carticon";
 import CartDropdown from "../Cart -dropdown/CartDropdown";
 import {  useSelector } from "react-redux";
+import Logo from "../logo/logo";
 
 
 
@@ -74,7 +75,7 @@ const NavbarComponent = () => {
     
       <div className="logo-container ms-3"  >
         <Link to={ showSignout === true ? "/dashboard" : "/"} >
-      <img width={'60px'} height={'60px'} src="https://cdn.pixabay.com/photo/2017/03/16/21/18/logo-2150297_640.png" alt="" />  
+      <Logo/>
         </Link>
       </div>
 

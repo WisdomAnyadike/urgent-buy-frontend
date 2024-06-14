@@ -16,6 +16,7 @@ import { set } from 'date-fns';
 import { manageAdminHook } from './manageAdminHook';
 import { createProduct } from '../../../services/admin';
 import Preloader from '../../Components/loader/loader';
+import Logo from '../../Components/logo/logo';
 
 
 
@@ -174,6 +175,7 @@ const Adminpage = () => {
       setIsLoading(false)
     } else {
       alert('An unknown error occurred.');
+      setIsLoading(false)
     }
     if (result && result.status === 'success') {
       setIsLoading(false)
@@ -207,12 +209,12 @@ const Adminpage = () => {
       try {
         const res = await axios.post(`https://ecommerce-backend-pq9c.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
         if (res.data.status === 'okay') {
-          toast.success('successfully accepted')
+          alert('successfully accepted')
         } else {
-          toast.error('failed')
+          alert('failed')
         }
       } catch (error) {
-        toast.error(error);
+        console.log(error);
       }
     }
   }
@@ -344,6 +346,7 @@ const Adminpage = () => {
               </div>
 
               <div style={{ width: "fit-content" }}>
+              <Logo/>
 
               </div>
 
@@ -640,16 +643,7 @@ const Adminpage = () => {
                   <div className="d-flex w-100 mb-3">
                     <div className="col-sm-offset-3 col-sm-9">
                       <button type="submit" disabled={isloading} style={{ width: "100px", height: "40px" }} onClick={(e) => handleSubmit(e)} className="btn btn-dark  d-flex align-items-center justify-content-center"> {isloading ? <Preloader /> : 'Submit'}</button>
-                      <ToastContainer
-                        position='top-right'
-                        progressStyle={{
-                          backgroundColor: '#black'
-                        }
-                        }
-                        toastStyle={{
-                          backgroundColor: 'rgb(46, 46, 46)',
-                          color: "white"
-                        }} />
+                     
                     </div>
                   </div>
                 </form>

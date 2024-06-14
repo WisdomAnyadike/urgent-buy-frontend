@@ -36,7 +36,7 @@ const SignIn = () => {
 		}), onSubmit: async (value) => {
 			setIsLoading(true)
 			try {
-				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/signup', value)
+				const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/User/signup', value)
 				if (res.data.status == 'success') {
 					setIsLoading(false)
 					alert(res.data.message)
@@ -71,7 +71,7 @@ const SignIn = () => {
 			setIsLoading(true)
 
 			try {
-				const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/User/login', value)
+				const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/User/login', value)
 				if (res.data.status == 'success') {
 					setIsLoading(false)
 					toast.success(res.data.message)

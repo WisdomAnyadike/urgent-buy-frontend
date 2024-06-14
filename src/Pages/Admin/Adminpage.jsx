@@ -15,6 +15,7 @@ import { DotChartOutlined } from '@ant-design/icons';
 import { set } from 'date-fns';
 import { manageAdminHook } from './manageAdminHook';
 import { createProduct } from '../../../services/admin';
+import Preloader from '../../Components/loader/loader';
 
 
 
@@ -206,12 +207,12 @@ const Adminpage = () => {
       try {
         const res = await axios.post(`https://ecommerce-backend-pq9c.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
         if (res.data.status === 'okay') {
-          alert('successfully updated')
+          toast.success('successfully accepted')
         } else {
-          alert('failed')
+          toast.error('failed')
         }
       } catch (error) {
-        console.log(error);
+        toast.error(error);
       }
     }
   }
@@ -527,42 +528,42 @@ const Adminpage = () => {
                   </tr>
                 </thead>
                 <tbody>{
-                  pending.length === 0 ?  'no pending transactions' :
-                
-                  pending.map(({ _id, transactionAmount, transactionOrder, transactionStatus, transactionReference, transactionTag, createdAt }) =>
+                  pending.length === 0 ? 'no pending transactions' :
+
+                    pending.map(({ _id, transactionAmount, transactionOrder, transactionStatus, transactionReference, transactionTag, createdAt }) =>
 
 
-                    <tr key={_id} class="align-middle">
-                      <td >
-                        {transactionReference}
-                      </td>
-                      <td>{<TimeAgo timestamp={createdAt} />}</td>
-                      <td>{transactionTag}</td>
-                      <td >
-                        <div class="d-flex align-items-center">
-                          <span><i class="fa fa-arrow-up text-success me-1" aria-hidden="true"></i></span>
-                          <span>N{transactionAmount}</span>
-                        </div>
-                      </td>
-                      <td>
-                        <span class="badge fs-6 fw-normal bg-tint-warning text-success">{transactionOrder}</span>
-                      </td>
-                      <td>
-                        <span className={transactionStatus === 'success' ? 'text-success badge fs-6 fw-normal bg-tint-warning' : 'text-danger badge fs-6 fw-normal bg-tint-warning'} >{transactionStatus}</span>
-                      </td>
-                      <td>
-                        <button onClick={() => confirmStatus(_id, 'success')} class="badge fs-6 fw-normal bg-success"> accept </button>
-                      </td>
-                      <td>
-                        <button onClick={() => confirmStatus(_id, 'failed')} class="badge fs-6 fw-normal bg-danger"> reject </button>
-                      </td>
-                    </tr>
+                      <tr key={_id} class="align-middle">
+                        <td >
+                          {transactionReference}
+                        </td>
+                        <td>{<TimeAgo timestamp={createdAt} />}</td>
+                        <td>{transactionTag}</td>
+                        <td >
+                          <div class="d-flex align-items-center">
+                            <span><i class="fa fa-arrow-up text-success me-1" aria-hidden="true"></i></span>
+                            <span>N{transactionAmount}</span>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge fs-6 fw-normal bg-tint-warning text-success">{transactionOrder}</span>
+                        </td>
+                        <td>
+                          <span className={transactionStatus === 'success' ? 'text-success badge fs-6 fw-normal bg-tint-warning' : 'text-danger badge fs-6 fw-normal bg-tint-warning'} >{transactionStatus}</span>
+                        </td>
+                        <td>
+                          <button onClick={() => confirmStatus(_id, 'success')} class="badge fs-6 fw-normal bg-success"> accept </button>
+                        </td>
+                        <td>
+                          <button onClick={() => confirmStatus(_id, 'failed')} class="badge fs-6 fw-normal bg-danger"> reject </button>
+                        </td>
+                      </tr>
 
-                  )
-                  
-                  }
+                    )
 
-                
+                }
+
+
 
 
                 </tbody>
@@ -638,56 +639,17 @@ const Adminpage = () => {
                   <hr />
                   <div className="d-flex w-100 mb-3">
                     <div className="col-sm-offset-3 col-sm-9">
-                      <button type="submit" disabled={isloading} style={{ width: "100px", height: "40px" }} onClick={(e) => handleSubmit(e)} className="btn btn-dark  d-flex align-items-center justify-content-center"> {isloading ? <main>
-                        <svg class="sp" viewBox="0 0 128 128" width="28px" height="28px" xmlns="http://www.w3.org/2000/svg">
-                          <defs>
-                            <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stop-color="#000" />
-                              <stop offset="40%" stop-color="#fff" />
-                              <stop offset="100%" stop-color="#fff" />
-                            </linearGradient>
-                            <linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stop-color="#000" />
-                              <stop offset="60%" stop-color="#000" />
-                              <stop offset="100%" stop-color="#fff" />
-                            </linearGradient>
-                            <mask id="mask1">
-                              <rect x="0" y="0" width="128" height="128" fill="url(#grad1)" />
-                            </mask>
-                            <mask id="mask2">
-                              <rect x="0" y="0" width="128" height="128" fill="url(#grad2)" />
-                            </mask>
-                          </defs>
-                          <g fill="none" stroke-linecap="round" stroke-width="16">
-                            <circle class="sp__ring" r="56" cx="64" cy="64" stroke="#ddd" />
-                            <g stroke="hsl(223,90%,50%)">
-                              <path class="sp__worm1" d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64" stroke="hsl(343,90%,50%)" stroke-dasharray="43.98 307.87" />
-                              <g transform="translate(42,42)">
-                                <g class="sp__worm2" transform="translate(-42,0)">
-                                  <path class="sp__worm2-1" d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14" stroke-dasharray="43.98 175.92" />
-                                </g>
-                              </g>
-                            </g>
-                            <g stroke="hsl(283,90%,50%)" mask="url(#mask1)">
-                              <path class="sp__worm1" d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64" stroke-dasharray="43.98 307.87" />
-                              <g transform="translate(42,42)">
-                                <g class="sp__worm2" transform="translate(-42,0)">
-                                  <path class="sp__worm2-1" d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14" stroke-dasharray="43.98 175.92" />
-                                </g>
-                              </g>
-                            </g>
-                            <g stroke="hsl(343,90%,50%)" mask="url(#mask2)">
-                              <path class="sp__worm1" d="M120,64c0,30.928-25.072,56-56,56S8,94.928,8,64" stroke-dasharray="43.98 307.87" />
-                              <g transform="translate(42,42)">
-                                <g class="sp__worm2" transform="translate(-42,0)">
-                                  <path class="sp__worm2-1" d="M8,22c0-7.732,6.268-14,14-14s14,6.268,14,14" stroke-dasharray="43.98 175.92" />
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </main> : 'Submit'}</button>
-                      <ToastContainer />
+                      <button type="submit" disabled={isloading} style={{ width: "100px", height: "40px" }} onClick={(e) => handleSubmit(e)} className="btn btn-dark  d-flex align-items-center justify-content-center"> {isloading ? <Preloader /> : 'Submit'}</button>
+                      <ToastContainer
+                        position='top-right'
+                        progressStyle={{
+                          backgroundColor: '#black'
+                        }
+                        }
+                        toastStyle={{
+                          backgroundColor: 'rgb(46, 46, 46)',
+                          color: "white"
+                        }} />
                     </div>
                   </div>
                 </form>

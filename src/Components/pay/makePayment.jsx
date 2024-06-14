@@ -34,7 +34,7 @@ function MydModalWithGrid(props) {
 
             if (res.data.status === 'okay') {
                 toast.success('success , click on payment status')
-                
+
                 setTimeout(()=> {
                     dispatch(emptyCart());
                     navigate('/settings')
@@ -105,7 +105,7 @@ function MydModalWithGrid(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body >
-                <h4>Scan to Pay</h4>
+                <h4>Scan & Pay <b> ${props.total} </b> </h4>
                 <img width={'300px'} height={'400px'} src="cashapp.jpg" alt="" />
                 <div>
                     <input type="text" onChange={(e) => setTag(e.target.value)} className='mt-0 w-50 rounded mb-2' style={{ fontSize: '14px' }} placeholder='Enter your cashapp tag' />

@@ -10,6 +10,7 @@ import { setUserObj } from '../../Components/Redux/Userslice';
 import { formatDistanceToNow } from 'date-fns';
 import TimeAgo from '../../Components/Time/Timeago';
 import Ads from '../../Components/ad/ads';
+import Preloader from '../../Components/loader/loader';
 
 
 
@@ -19,6 +20,9 @@ const Settings = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const token = localStorage.getItem("urgentBuyToken")
+  const [isLoading1, setisLoading1] = useState(false)
+  const [isLoading2, setisLoading2] = useState(false)
+  const [isLoading3, setisLoading3] = useState(false)
 
   const dispatch = useDispatch()
   const [picture, setPicture] = useState('https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg')
@@ -30,11 +34,11 @@ const Settings = () => {
   };
 
   const editFullName = (e) => {
-    dispatch(setUserObj({ ...userObj, FullName: e.target.value }))
+    dispatch(setUserObj({ ...userObj, FullName: e.target.value.toLowerCase() }))
 
   }
   const editEmail = (e) => {
-    dispatch(setUserObj({ ...userObj, Email: e.target.value }))
+    dispatch(setUserObj({ ...userObj, Email: e.target.value.toLowerCase() }))
   }
 
   const [userTransactions, setUserTransactions] = useState([]);
@@ -90,14 +94,19 @@ const Settings = () => {
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#*])[A-Za-z0-9@#*]{8,}$/
 
   const changePassword = async (event) => {
+    setisLoading2(true)
 
     event.preventDefault()
     console.log('red');
 
     if (!passwordRegex.test(password) || !passwordRegex.test(confirmPassword)) {
+      setisLoading2(false)
       toast.error('Password must be at least 8 characters , with at least a number & special character')
+      
     } else if (password !== confirmPassword || confirmPassword !== password) {
+      setisLoading2(false)
       toast.error('Passwords do not match')
+      
     }
     else {
       try {
@@ -108,19 +117,23 @@ const Settings = () => {
           }
         })
         if (res.data.status === 'okay') {
+
           toast.success(res.data.message)
           setTimeout(() => {
+            setisLoading2(false)
             navigate('/dashboard')
           }, 3000)
         }
       } catch (error) {
         alert(error.response.data.message)
+        setisLoading2(false)
       }
     }
   }
 
 
   const changeUserInfo = async (event) => {
+    setisLoading1(true)
     event.preventDefault()
     console.log('red');
 
@@ -135,6 +148,7 @@ const Settings = () => {
         toast.success(res.data.message)
 
         setTimeout(() => {
+          setisLoading1(false)
           navigate('/dashboard')
         }, 3000)
 
@@ -143,11 +157,13 @@ const Settings = () => {
       }
     } catch (error) {
       alert(error.response.data.message)
+      setisLoading1(false)
     }
 
   }
 
   const handleDelete = async (e) => {
+    setisLoading3(true)
     e.preventDefault()
     const verifyDelete = window.confirm("are you sure?");
     if (verifyDelete) {
@@ -161,13 +177,14 @@ const Settings = () => {
 
         if (res.data.status === 'okay') {
           alert(res.data.message)
+          setisLoading3(false)
           localStorage.removeItem('urgentBuyToken')
           navigate('/signin')
 
         }
 
       } catch (error) {
-
+        setisLoading3(false)
         alert(error.response.data.message)
 
       }
@@ -259,7 +276,10 @@ const Settings = () => {
                       All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
                     </div>
 
-                    <button type="submit" onClick={changeUserInfo} className="btn mt-4" style={{ backgroundColor: "#000", color: 'white' }}>Update Profile</button>
+                    <button type="submit" disabled={isLoading1} onClick={changeUserInfo} className="btn mt-4 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#000", color: 'white', width: "100px", height: "37px" }}>
+                      {isLoading1 ? <Preloader /> : 'Update Profile'}
+
+                    </button>
                     <ToastContainer />
 
                   </form>
@@ -274,7 +294,7 @@ const Settings = () => {
                       <label className="d-block text-danger">Delete Account</label>
                       <p className="text-muted font-size-sm">Once you delete your account, there is no going back. Please be certain.</p>
                     </div>
-                    <button onClick={(e) => handleDelete(e)} className="btn btn-danger" type="button">Delete Account</button>
+                    <button onClick={(e) => handleDelete(e)} disabled={isLoading3} className="btn btn-danger d-flex align-items-center justify-content-center" style={{ width: "100px", height: "37px" }} type="button"> {isLoading3 ? <Preloader /> : 'Delete Account'}</button>
                   </form>
                 </div>
                 <div className={`tab-pane ${activeTab === 'security' ? 'active' : ''}`} id="security">
@@ -289,8 +309,8 @@ const Settings = () => {
 
 
 
-                    <button className="btn" onClick={changePassword} style={{ backgroundColor: "#000", color: 'white' }} type="submit">
-                      Confirm Password Change
+                    <button className="btn d-flex align-items-center justify-content-center" disabled={isLoading2} onClick={changePassword} style={{ backgroundColor: "#000", color: 'white', width: "160px", height: "37px" }} type="submit">
+                      {isLoading2 ? <Preloader /> : 'Confirm Password Change'}
                     </button>
                     <p className="small text-muted mt-2">Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in.</p>
                     <ToastContainer />
@@ -323,8 +343,8 @@ const Settings = () => {
                     </div>
                     <div className="w-100 mb-0">
                       <label className="d-block mb-1">Payment History</label>
-                      <div className="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm"> {userTransactions.length === 0 ? <div className="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">You have not made any payment.</div> : <div className='w-100 bg-light ' style={{ overflowY: 'scroll', maxHeight: '300px' }}> {userTransactions.map(({ transactionReference, createdAt, transactionStatus }) =>
-                        <li className='w-100 border  d-flex align-items-center justify-content-between mb-2 p-1'> <span className={transactionStatus === 'failed' ? 'text-danger me-1' : 'text-success me-1'}> {transactionReference} ({transactionStatus})</span>  <small className='d-flex justify-content-end align-items-center' style={{ width: "35%" }}>{<TimeAgo timestamp={createdAt} />} </small> </li>
+                      <div className="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm"> {userTransactions.length === 0 ? <div className="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">You have not made any payment.</div> : <div className='w-100 bg-light ' style={{ overflowY: 'scroll', maxHeight: '300px' }}> {userTransactions.map(({ transactionReference,transactionAmount , createdAt, transactionStatus }) =>
+                        <li className='w-100 border  d-flex align-items-center justify-content-between mb-2 p-1'> <span className={transactionStatus === 'failed' ? 'text-danger me-1' : 'text-success me-1'}> ${transactionAmount} Reference no: {transactionReference} Status:({transactionStatus})</span>  <small className='d-flex justify-content-end align-items-center' style={{ width: "35%" }}>{<TimeAgo timestamp={createdAt} />} </small> </li>
 
                       )}</div>} </div>
 

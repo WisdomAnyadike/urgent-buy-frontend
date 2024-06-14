@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Userslice, { fetchError, fetchingUser, setUserObj } from '../../Components/Redux/Userslice'
 import Footer from '../../Components/Footer/Footer'
+import Preloader from '../../Components/loader/loader'
 
 
 
@@ -17,6 +18,7 @@ import Footer from '../../Components/Footer/Footer'
 
 const SignIn = () => {
 	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading1, setIsLoading1] = useState(false)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const [isPassword, setIsText] = useState(true)
@@ -31,7 +33,7 @@ const SignIn = () => {
 		}, validationSchema: yup.object({
 			FullName: yup.string().min(5, 'Must be at least 5 characters').required('Name is required'),
 			Email: yup.string().email('Must be a valid email').required('Email is required'),
-			Password: yup.string().matches('^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#*])[A-Za-z0-9@#*]{8,}$', 'Must be a strong password').required('Password is required')
+		Password: yup.string().matches('^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#*/.,])[A-Za-z0-9@#*]{8,}$', 'Must be a strong password(consist of atleast a number & special character)').required('Password is required')
 
 		}), onSubmit: async (value) => {
 			setIsLoading(true)
@@ -68,12 +70,12 @@ const SignIn = () => {
 
 		}), onSubmit: async (value) => {
 			dispatch(fetchingUser())
-			setIsLoading(true)
+			setIsLoading1(true)
 
 			try {
 				const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/User/login', value)
 				if (res.data.status == 'success') {
-					setIsLoading(false)
+					setIsLoading1(false)
 					toast.success(res.data.message)
 					dispatch(setUserObj(res.data.findUser))
 					localStorage.setItem('urgentBuyToken', res.data.genToken)
@@ -82,13 +84,13 @@ const SignIn = () => {
 					}, 5000)
 
 				} else {
-					setIsLoading(false)
+					setIsLoading1(false)
 					toast.error(res.data.message)
 				}
 			} catch (error) {
 
 				if (error.response.data.status == 'notcreated') {
-					setIsLoading(false)
+					setIsLoading1(false)
 					toast.error(error.response.data.message)
 					dispatch(fetchError(error.response.data.message))
 					setTimeout(() => {
@@ -97,7 +99,7 @@ const SignIn = () => {
 					}, 5000)
 
 				} else {
-					setIsLoading(false)
+					setIsLoading1(false)
 					toast.error(error.response.data.message)
 				}
 
@@ -136,7 +138,7 @@ const SignIn = () => {
 
 
 		<div className="container " id="container">
-		
+
 			<div className="form-container sign-up-container">
 				<form onSubmit={formik.handleSubmit} action="#">
 					<h1 className='customer-text1' style={{ minWidth: "160px" }}>Create Account</h1>
@@ -151,9 +153,7 @@ const SignIn = () => {
 					<input onBlur={formik.handleBlur} name='Password' onChange={formik.handleChange} type={isPassword ? 'password' : 'text'} placeholder="Password" />
 
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik.touched.Password && formik.errors.Password ? formik.errors.Password : ''}</small></small>
-					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ backgroundColor: "#000", border: '1px solid #4e04b2', minWidth: "150px", height: "50px" }} >{isLoading ? <div class="spinner-border text-light" role="status">
-						<span class="visually-hidden">Loading...</span>
-					</div> : 'Sign Up'}</button>
+					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ backgroundColor: "#000", border: '1px solid #4e04b2', minWidth: "150px", height: "50px" }} >{isLoading ? <Preloader/> : 'Sign Up'}</button>
 
 
 				</form>
@@ -168,23 +168,20 @@ const SignIn = () => {
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Email && formik2.errors.Email ? formik2.errors.Email : ''}</small></small>
 					<input onBlur={formik2.handleBlur} name='Password' onChange={formik2.handleChange} type="password" placeholder="Password" />
 					<small className='customer-text1 text-danger d-flex justify-content-start w-100' style={{ minWidth: "160px" }}><small>{formik2.touched.Password && formik2.errors.Password ? formik2.errors.Password : ''}</small></small>
-				
+
 					<Link style={{ minWidth: "180px" }} className='pb-0 mb-0' to="/forgotpassword">Forgot your password?</Link>
 
-					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ minWidth: "160px", height: '50px' }} >{isLoading ? <div class="spinner-border text-light" role="status">
-						<span class="visually-hidden">Loading...</span>
-					</div> : 'Sign In'}</button>
-					<div style={{ zIndex: 90 }}> <ToastContainer
-						zIndex={90}
-						position='bottom-left'
-						autoClose={5000}
-						hideProgressBar={false}
-						newestOnTop={false}
-						closeOnClick
-						rtl={false}
-						pauseOnFocusLoss
-						draggable
-						pauseOnHover /></div>
+					<button type='submit' disabled={isLoading} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ minWidth: "160px", height: '50px' }} >{isLoading1 ? <Preloader/> : 'Sign In'}</button>
+					<div style={{ zIndex: 90 }}>       <ToastContainer
+						position='top-right'
+						progressStyle={{
+							backgroundColor: '#black'
+						}
+						}
+						toastStyle={{
+							backgroundColor: 'rgb(46, 46, 46)',
+							color: "white"
+						}} /></div>
 				</form>
 			</div>
 			<div className="overlay-container">
@@ -204,7 +201,7 @@ const SignIn = () => {
 			</div>
 
 
-			
+
 		</div>
 
 

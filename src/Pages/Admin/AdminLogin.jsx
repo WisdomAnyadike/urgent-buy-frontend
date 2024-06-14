@@ -13,8 +13,8 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const AdminObject = {
-      EMAIL,
-      PASSWORD
+      EMAIL:EMAIL.toLowerCase(),
+      PASSWORD: PASSWORD.toLowerCase()
     }
     const result = await admitAdmin(AdminObject);
     if (result && result.message) {

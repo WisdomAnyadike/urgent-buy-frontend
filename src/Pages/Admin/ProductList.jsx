@@ -17,7 +17,7 @@ const ProductList = ({ products }) => {
     let confirm = window.confirm('are you sure')
     if (confirm) {
       try {
-        const res = await axios.post(`https://urgent-buy-backend.onrender.com/Api/Products/deleteProduct/${id}`)
+        const res = await axios.post(`https://ecommerce-backend-pq9c.onrender.com/Api/Products/deleteProduct/${id}`)
         if (res.data.status == 'okay') {
           setIsLoading2(false)
           alert(res.data.message)

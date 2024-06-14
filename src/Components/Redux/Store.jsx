@@ -24,6 +24,7 @@ import PasswordSlice from './Changepassslice';
 import { combineReducers } from '@reduxjs/toolkit';
 import  NotifySlice  from './NotifySlice';
 import  LikeSlice  from './Likeslice';
+import itemSlice from './itemSlice';
 
 const persistConfig = {
   key: 'root',
@@ -35,7 +36,8 @@ const rootReducer = combineReducers({
   Userslice,
   PasswordSlice,
   NotifySlice,
-  LikeSlice
+  LikeSlice,
+  itemSlice,
 
 });
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Ads = () => {
+const Ads = ({style}) => {
   return (
-    <div className='ads'  data-aos="slide-right">
+    <div className={style ? 'ads m-0' : 'ads'}  data-aos="slide-right">
     END OF SEASON SALE 90% OFF SELECT ITEMS
   </div>
   )

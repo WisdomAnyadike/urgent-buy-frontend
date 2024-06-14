@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { emptyCart } from '../../Components/Redux/Dropdownslice'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 function MydModalWithGrid(props) {
 
@@ -18,23 +19,29 @@ function MydModalWithGrid(props) {
     const [order, setOrder] = useState('')
     const userObj = useSelector(state => state.Userslice.userObj)
 
- const navigate = useNavigate()
+    const navigate = useNavigate()
 
 
     const postIt = async () => {
         try {
-            const res = await axios.post('https://urgent-buy-backend.onrender.com/Api/Transaction/createTransaction', {
+            const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/Transaction/createTransaction', {
                 transactionAmount: props.total,
                 transactionUser: userObj.FullName,
                 transactionTag: tag,
-                transactionOrder: order ,
+                transactionOrder: order,
                 transactionEmail: userObj.Email
             })
 
-            if (res.data.status == 'okay') {
-                alert('success , click on payment status')
+            if (res.data.status === 'okay') {
+                toast.success('success , click on payment status')
+                
+                setTimeout(()=> {
+                    dispatch(emptyCart());
+                    navigate('/settings')
+                },2000)
+               
             } else {
-                alert('failed')
+                toast.error('failed, try again')
             }
         } catch (error) {
             console.log(error);
@@ -72,9 +79,9 @@ function MydModalWithGrid(props) {
         let confirm = window.confirm('do you confirm order?')
 
         if (confirm) {
-            dispatch(emptyCart());
+ 
             postIt()
-            navigate('/settings')
+            
         }
     }
 
@@ -119,6 +126,16 @@ function MydModalWithGrid(props) {
                     Confirm Order
                 </Button>
                 <Button onClick={props.onHide}>Close</Button>
+                <ToastContainer
+                    position='top-right'
+                    progressStyle={{
+                        backgroundColor: '#black'
+                    }
+                    }
+                    toastStyle={{
+                        backgroundColor: 'rgb(46, 46, 46)',
+                        color: "white"
+                    }} />
             </Modal.Footer>
         </Modal>
 

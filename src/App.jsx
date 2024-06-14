@@ -13,6 +13,7 @@ import Changepassword from './Pages/ChangePassword/Changepassword'
 import Adminpage from './Pages/Admin/Adminpage'
 import AdminLogin from './Pages/Admin/AdminLogin'
 import Error from './Components/404/error'
+import ProductShowcase from './Pages/seemore/seemore'
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
     <Route path='/shop' element={<Shop/>}/> 
     <Route path='/checkout' element={<Checkout/>}/> 
     <Route path='/settings' element={<Settings/>}/> 
+    <Route path='/item' element={<ProductShowcase/>}/> 
 
    </Route>
    <Route  path='*' element={<Error/>} />

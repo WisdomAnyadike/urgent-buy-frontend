@@ -4,11 +4,14 @@ import { useDispatch } from 'react-redux'
 import { setCartArr } from '../Redux/Dropdownslice'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 import { useSelector } from 'react-redux';
 import { setNotifyArr, setNotifyArrEmpty } from '../Redux/NotifySlice';
 import { setIsLiked } from '../Redux/Likeslice';
+import { setitemObj } from '../Redux/itemSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -18,10 +21,11 @@ import { setIsLiked } from '../Redux/Likeslice';
 
 const ProductCard = ({ data: { _id, productName, productImage, productPrice }}) => {
    
-
+const navigate = useNavigate()
    
  
     const userObj = useSelector(state => state.Userslice.userObj)
+    
     const dispatch = useDispatch()
     const token = localStorage.getItem("urgentBuyToken")
 
@@ -74,13 +78,28 @@ const ProductCard = ({ data: { _id, productName, productImage, productPrice }}) 
 
     }
 
+    function seeMore(_id, productName, productImage, productPrice) {
+        const cartObject = {
+            _id,
+            productName,
+            productImage,
+            productPrice,
+            quantity: 1,
+        }
+        
+        dispatch(setitemObj(cartObject)) 
+      
+    }
+
    
    
 
     return (
-            <>   
-                <div className="product-grid rounded">
+            <>  
+          
+                <div  className="product-grid rounded">
                     <div className="product-image ">
+                    <Link onClick={()=> seeMore(_id, productName, productImage, productPrice)} to='/item'>
                         <a href="#" className="image">
                             <img width={150} height={150} className='rounded' src={productImage} />
                         </a>
@@ -91,7 +110,8 @@ const ProductCard = ({ data: { _id, productName, productImage, productPrice }}) 
                             <li><a ><i className="fa fa-random"></i></a></li>
 
                         </ul>
-                        <button className='border-0 add-to-cart' onClick={() => handleCart(_id, productName, productImage, productPrice)}   >Add to Cart</button>
+                        </Link>
+                        <button className='border-0 add-to-cart' onClick={() => handleCart(_id, productName, productImage, productPrice)} > Add to Cart</button>
                     </div>
                     <div className="product-content " style={{ borderRadius: "0px 0px 5px 5px" }}>
                         <h3 className="title"><a href="#">{productName}</a></h3>
@@ -99,6 +119,8 @@ const ProductCard = ({ data: { _id, productName, productImage, productPrice }}) 
                     </div>
 
                 </div>
+                
+        
         
 
         </>

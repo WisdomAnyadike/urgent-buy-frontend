@@ -13,7 +13,7 @@ const Shop = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get('https://urgent-buy-backend.onrender.com/Api/Products/getProducts').then((res) => {
+    axios.get('https://ecommerce-backend-pq9c.onrender.com/Api/Products/getProducts').then((res) => {
       setIsLoading(false)
       setData(res.data.data);
 
@@ -51,16 +51,15 @@ const Shop = () => {
         }
 
         <ToastContainer
-          position='bottom-left'
-          //   progressStyle={{
-          //   backgroundColor : '#4e05b2'
-          // }
-          // }
+          position='bottom-right'
+            progressStyle={{
+            backgroundColor : '#black'
+          }
+          }
           toastStyle={{
-            backgroundColor: 'white',
-            color: "BFE5B9"
-          }}
-        />
+            backgroundColor: 'rgb(46, 46, 46)',
+            color: "white"
+          }}/>
       </div>
     </>
   )

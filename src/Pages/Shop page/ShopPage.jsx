@@ -15,7 +15,7 @@ const ShopPage = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    axios.get(`https://urgent-buy-backend.onrender.com/Api/Products/getProductsByCategory/${category}`).then((res) => {
+    axios.get(`https://ecommerce-backend-pq9c.onrender.com/Api/Products/getProductsByCategory/${category}`).then((res) => {
       setData(res.data.product)
       setIsLoading(false)
     }
@@ -26,10 +26,10 @@ const ShopPage = () => {
   return (
     <div className='products-container'>
       <h4 className='w-100  mb-0 d-flex border align-items-center justify-content-center'> {category} </h4>
-      <Ads/>
+      <Ads style={'ms-0'}/>
 
       {
-        isLoading ? <div className='w-100 d-flex flex-wrap justify-content-around mt-2' >
+        isLoading || datas.length == 0 ? <div className='w-100 d-flex flex-wrap justify-content-around mt-2' >
           {array.map(() =>
             <Skeleton.Button className=' mb-2 ' active={true} style={{ width: '300px', height: '320px', minWidth: "280px" }} />
           )}

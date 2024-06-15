@@ -207,7 +207,7 @@ const Adminpage = () => {
     let confirm = window.confirm(`${status === 'success' ? 'accept' : 'reject'},are you sure?`)
     if (confirm) {
       try {
-        const res = await axios.post(`https://ecommerce-backend-pq9c.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
+        const res = await axios.post(`https://ecom-backend-mezo.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
         if (res.data.status === 'okay') {
           alert('successfully accepted')
         } else {

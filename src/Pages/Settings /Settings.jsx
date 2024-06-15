@@ -45,7 +45,7 @@ const Settings = () => {
   useEffect(() => {
     const fetchUserTransactions = async () => {
       try {
-        const res = await axios.get('https://ecommerce-backend-pq9c.onrender.com/Api/Transaction/getUserTransactions', {
+        const res = await axios.get('https://ecom-backend-mezo.onrender.com/Api/Transaction/getUserTransactions', {
           headers: {
             'Authorization': `Bearer ${token}`,
             "content-type": "application/json"
@@ -110,7 +110,7 @@ const Settings = () => {
     }
     else {
       try {
-        const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/User/editPassword', { Password: password }, {
+        const res = await axios.post('https://ecom-backend-mezo.onrender.com/Api/User/editPassword', { Password: password }, {
           headers: {
             'Authorization': `Bearer ${token}`,
             "content-type": "application/json"
@@ -138,7 +138,7 @@ const Settings = () => {
     console.log('red');
 
     try {
-      const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/User/editUserInfo', userObj, {
+      const res = await axios.post('https://ecom-backend-mezo.onrender.com/Api/User/editUserInfo', userObj, {
         headers: {
           'Authorization': `Bearer ${token}`,
           "content-type": "application/json"
@@ -168,7 +168,7 @@ const Settings = () => {
     const verifyDelete = window.confirm("are you sure?");
     if (verifyDelete) {
       try {
-        const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/User/deleteUser', {}, {
+        const res = await axios.post('https://ecom-backend-mezo.onrender.com/Api/User/deleteUser', {}, {
           headers: {
             'Authorization': `Bearer ${token}`,
             "content-type": "application/json"

@@ -9,6 +9,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Preloader from '../loader/loader';
+import FormattedNumber from '../numberFormatter/numFormattter';
 
 function MydModalWithGrid(props) {
 
@@ -28,7 +29,7 @@ function MydModalWithGrid(props) {
     const postIt = async () => {
         setIsLoading(true)
         try {
-            const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/Transaction/createTransaction', {
+            const res = await axios.post('https://ecom-backend-mezo.onrender.com/Api/Transaction/createTransaction', {
                 transactionAmount: props.total,
                 transactionUser: userObj.FullName,
                 transactionTag: tag,
@@ -40,11 +41,11 @@ function MydModalWithGrid(props) {
                 setIsLoading(false)
                 toast.success('success , click on payment status')
 
-                setTimeout(()=> {
-                    dispatch(emptyCart());  
+                setTimeout(() => {
+                    dispatch(emptyCart());
                     navigate('/settings')
-                },2000)
-               
+                }, 2000)
+
             } else {
                 setIsLoading(false)
                 toast.error('failed, try again')
@@ -78,7 +79,7 @@ function MydModalWithGrid(props) {
 
         if (!cashAppRegex.test(tag)) {
             alert('invalid tag format')
-            return 
+            return
         }
 
         if (!tag || !order || !props.total || !userObj.FullName) {
@@ -91,9 +92,9 @@ function MydModalWithGrid(props) {
         let confirm = window.confirm('do you confirm order?')
 
         if (confirm) {
- 
+
             postIt()
-            
+
         }
     }
 
@@ -112,21 +113,21 @@ function MydModalWithGrid(props) {
             centered
         >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title id="contained-modal-title-vcenter" className='ms-1'>
                     Pay via Cash App
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body >
-                <h4>Scan & Pay <b> ${props.total} </b> </h4>
-                <img width={'300px'} height={'400px'} src="cashapp.jpg" alt="" />
+                <h5 className='ms-1 m-0'>Scan & Pay <b> $<FormattedNumber number={props.total} minimumFractionDigits={2} maximumFractionDigits={2} /> </b> </h5>
+                <img className='m-0' width={'250px'} height={'350px'} src="cashapp.jpg" alt="" />
                 <div>
-                    <input type="text" onChange={(e) => setTag(e.target.value)} className='mt-0 w-50 rounded mb-2' style={{ fontSize: '14px' }} placeholder='Enter your cashapp tag' />
-                    <b className='text-danger d-block mb-2 ' style={{ fontSize: '12px' }}>Ensure you provide your cash-app tag or risk losing your payment </b>
+                    <input type="text" onChange={(e) => setTag(e.target.value)} className='mt-0 w-50 rounded mb-2' style={{ fontSize: '13px' }} placeholder='Enter your cashapp tag' />
+                    <b className='text-danger d-block mb-2 ms-1' style={{ fontSize: '11px' }}>Ensure you provide your cash-app tag or risk losing your payment </b>
                     {
-                        <div>
+                        <div className='ms-1' >
 
                             {props.arr.map((product) =>
-                                <p key={product._id} className='ms-1'>{product.productName}  x {product.quantity} </p>
+                                <p key={product._id} className='m-0 ms-1' style={{ fontSize: '10px' }}>{product.productName}  x {product.quantity} </p>
                             )}
 
                         </div>
@@ -134,8 +135,8 @@ function MydModalWithGrid(props) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='dark' style={{ backgroundColor: "#000", color: 'white', width: "130px", height: "37px" }} className='d-flex align-items-center justify-content-center'  disabled={loading} onClick={() => post()} >
-                   {loading ? <Preloader/> : 'Confirm Order' } 
+                <Button variant='dark' style={{ backgroundColor: "#000", color: 'white', width: "130px", height: "37px" }} className='d-flex align-items-center justify-content-center' disabled={loading} onClick={() => post()} >
+                    {loading ? <Preloader /> : 'Confirm Order'}
                 </Button>
                 <Button variant='dark' style={{ backgroundColor: "#000", color: 'white', width: "90px", height: "37px" }} onClick={props.onHide}>Close</Button>
                 <ToastContainer

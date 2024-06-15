@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 // import { PaystackButton } from 'react-paystack'
 import Ads from '../../Components/ad/ads'
 import MydModalWithGrid from '../../Components/pay/makePayment'
+import FormattedNumber from '../../Components/numberFormatter/numFormattter'
 
 
 
@@ -14,7 +15,7 @@ import MydModalWithGrid from '../../Components/pay/makePayment'
 const Checkout = () => {
 
   const [modalShow, setModalShow] = useState(false);
- 
+
 
   const dispatch = useDispatch()
 
@@ -151,7 +152,8 @@ const Checkout = () => {
 
 
                     <p className="text-start text-md-center">
-                      <strong>N{productPrice * quantity}.00</strong>
+
+                      <strong>$<FormattedNumber number={productPrice * quantity} minimumFractionDigits={2} maximumFractionDigits={2} /></strong>
                     </p>
 
                   </div>
@@ -203,7 +205,9 @@ const Checkout = () => {
                 <li
                   className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   Products
-                  <span>N{total}.00</span>
+                  <span>
+                  $<FormattedNumber number={total} minimumFractionDigits={2} maximumFractionDigits={2} />
+                  </span>
 
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -218,7 +222,9 @@ const Checkout = () => {
                       <p className="mb-0">(including VAT)</p>
                     </strong>
                   </div>
-                  <span><strong>N{total}.00</strong></span>
+                  <span><strong>
+                  $<FormattedNumber number={total} minimumFractionDigits={2} maximumFractionDigits={2} />
+                  </strong></span>
                 </li>
               </ul>
 

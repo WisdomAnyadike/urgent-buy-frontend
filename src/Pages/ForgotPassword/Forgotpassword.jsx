@@ -21,7 +21,7 @@ const [Email , setEmail] = useState('')
 const handleSubmit = async(e)=> {
     e.preventDefault()
 try {
-    const res = await axios.post('https://ecommerce-backend-pq9c.onrender.com/Api/User/getOtp' , {Email})
+    const res = await axios.post('https://ecom-backend-mezo.onrender.com/Api/User/getOtp' , {Email})
 
     if (res.data.status === 'okay' ) {
         toast.success(res.data.message)

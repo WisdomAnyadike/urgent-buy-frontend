@@ -15,7 +15,7 @@ const ShopPage = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    axios.get(`https://ecommerce-backend-pq9c.onrender.com/Api/Products/getProductsByCategory/${category}`).then((res) => {
+    axios.get(`https://ecom-backend-mezo.onrender.com/Api/Products/getProductsByCategory/${category}`).then((res) => {
       setData(res.data.product)
       setIsLoading(false)
     }

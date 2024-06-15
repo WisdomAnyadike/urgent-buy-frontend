@@ -5,6 +5,7 @@ import { setCartArr } from '../Redux/Dropdownslice'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import FormattedNumber from '../numberFormatter/numFormattter';
 
 
 import { useSelector } from 'react-redux';
@@ -19,13 +20,13 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const ProductCard = ({ data: { _id, productName, productImage, productPrice }}) => {
-   
-const navigate = useNavigate()
-   
- 
+const ProductCard = ({ data: { _id, productName, productImage, productPrice , productDescription } }) => {
+
+    const navigate = useNavigate()
+
+
     const userObj = useSelector(state => state.Userslice.userObj)
-    
+
     const dispatch = useDispatch()
     const token = localStorage.getItem("urgentBuyToken")
 
@@ -43,7 +44,7 @@ const navigate = useNavigate()
     }
 
 
-    
+
 
 
     const handleLike = async (e, productName) => {
@@ -78,28 +79,29 @@ const navigate = useNavigate()
 
     }
 
-    function seeMore(_id, productName, productImage, productPrice) {
+    function seeMore(_id, productName, productImage, productPrice , productDescription) {
         const cartObject = {
             _id,
             productName,
             productImage,
             productPrice,
             quantity: 1,
+            productDescription
         }
-        
-        dispatch(setitemObj(cartObject)) 
-      
+
+        dispatch(setitemObj(cartObject))
+
     }
 
-   
-   
+
+
 
     return (
-            <>  
-          
-                <div  className="product-grid rounded">
-                    <div className="product-image ">
-                    <Link onClick={()=> seeMore(_id, productName, productImage, productPrice)} to='/item'>
+        <>
+
+            <div className="product-grid rounded">
+                <div className="product-image ">
+                    <Link onClick={() => seeMore(_id, productName, productImage, productPrice , productDescription)} to='/item'>
                         <a href="#" className="image">
                             <img width={150} height={150} className='rounded' src={productImage} />
                         </a>
@@ -110,18 +112,25 @@ const navigate = useNavigate()
                             <li><a ><i className="fa fa-random"></i></a></li>
 
                         </ul>
-                        </Link>
-                        <button className='border-0 add-to-cart' onClick={() => handleCart(_id, productName, productImage, productPrice)} > Add to Cart</button>
-                    </div>
-                    <div className="product-content " style={{ borderRadius: "0px 0px 5px 5px" }}>
-                        <h3 className="title"><a href="#">{productName}</a></h3>
-                        <div className="productPrice">N{productPrice}.00  <span style={{ textDecoration: 'line-through' }}> N{(productPrice * (23 / 100)) + productPrice}</span></div>
-                    </div>
-
+                    </Link>
+                    <button className='border-0 add-to-cart' onClick={() => handleCart(_id, productName, productImage, productPrice)} > Add to Cart</button>
                 </div>
-                
-        
-        
+                <div className="product-content " style={{ borderRadius: "0px 0px 5px 5px" }}>
+                    <h3 className="title"><a href="#">{productName}</a></h3>
+                    <div className="productPrice">
+
+                        $<FormattedNumber number={productPrice} minimumFractionDigits={2} maximumFractionDigits={2} />
+
+                        <span style={{ textDecoration: 'line-through' }}>
+                           $<FormattedNumber number={(productPrice * (23 / 100)) + productPrice} minimumFractionDigits={2} maximumFractionDigits={2} />
+
+                            </span></div>
+                </div>
+
+            </div>
+
+
+
 
         </>
 

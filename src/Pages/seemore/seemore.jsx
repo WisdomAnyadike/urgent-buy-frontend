@@ -5,6 +5,7 @@ import Ads from '../../Components/ad/ads';
 import { useSelector,useDispatch } from 'react-redux';
 import { setCartArr } from '../../Components/Redux/Dropdownslice';
 import { Link } from 'react-router-dom';
+import FormattedNumber from '../../Components/numberFormatter/numFormattter';
 
 
 
@@ -14,7 +15,7 @@ const ProductShowcase = () => {
 
   const cartObj = useSelector(state => state.itemSlice.cartObj)
   const dispatch = useDispatch()
-  const { _id ,productName , productPrice , productImage} = cartObj
+  const { _id ,productName , productPrice , productImage , productDescription} = cartObj
 
 
   const handleCart = (_id, productName, productImage, productPrice) => {
@@ -65,7 +66,7 @@ const ProductShowcase = () => {
                 <span class="fa fa-star-half-full"></span> </p>
 
               <h3 className='mt-2'> Details </h3>
-              <p className='mb-2'> Experience the ultimate in skincare with our rejuvenating face cream. This luxurious formula hydrates, smooths, and revitalizes your skin for a radiant glow.</p>
+              <p className='mb-2'>{productDescription}</p>
 
 
 
@@ -77,7 +78,7 @@ const ProductShowcase = () => {
                     <big><b>Price</b></big>
 
                   </div>
-                  <div className="row"> <big><b>${productPrice}.00</b></big></div>
+                  <div className="row"> <big><b>$<FormattedNumber number={productPrice} minimumFractionDigits={2} maximumFractionDigits={2} /> </b></big></div>
 
                 </span> </label> </div>
 

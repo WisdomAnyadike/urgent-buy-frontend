@@ -1,13 +1,18 @@
 .gradient-custom-2 {
     /* fallback for old browsers */
-    background: #fccb90;
+    background: #1c1c1c;
     
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right,  #fe1e70, #96117d);
+    background: -webkit-linear-gradient(to right,  #1a1a1a, #0f030d);
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right , #fe1e70, #96117d);
+    background: linear-gradient(to right , #000000, #443741);
     }
+
+    .divo{
+        height: 100vh;
+    }
+   
     
     @media (min-width: 768px) {
     .gradient-form {

@@ -8,8 +8,8 @@ const Reviews = () => {
             <div className="contained w-100 mt-0">
 
                 <div className="box" data-aos="flip-up">
-                    <div className="imgBox">
-                        <img src="https://img.freepik.com/free-photo/portrait-handsome-young-man-makes-okay-gesture-demonstrates-agreement-likes-idea-smiles-happily-wears-optical-glasses-yellow-hat-t-shirt-models-indoor-its-fine-thank-you-hand-sign_273609-30676.jpg?size=626&ext=jpg" alt="" />
+                    <div className="imgBox rounded-circle">
+                        <img src="https://www.skincare.com/-/media/project/loreal/brand-sites/sdc/americas/us/articles/2022/11-november/08-how-to-get-glowing-skin/_how-to-get-glowing-skin-tips-for-a-radiant-complexion-hero-sdc-110822.jpg?cx=0.49&cy=0.54&cw=705&ch=529&blr=False&hash=9F68F5B5CF7B753C7836EEEF7AA86C49" alt="" />
 
                     </div>
                     <div className="content d-flex flex-column align-items-center justify-content-end me-5">
@@ -25,7 +25,7 @@ const Reviews = () => {
                 </div>
                 <div className="box" data-aos="flip-right">
                     <div className="imgBox">
-                        <img src="https://image.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg" alt="" />
+                        <img src="https://beauty.thewom.it/content/uploads/sites/3/2021/05/skincare-uomo-pelle-grassa.jpg" alt="" />
                     </div>
                     <div className="content d-flex flex-column align-items-center justify-content-end me-5">
                         <h4> It works like magic, love!</h4>
@@ -40,7 +40,7 @@ const Reviews = () => {
                 </div>
                 <div className="box" data-aos="flip-down">
                     <div className="imgBox">
-                        <img src="https://image.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg" alt="" />
+                        <img src="https://media.allure.com/photos/5fdd2cfb4ec68910b62ab8e8/4:3/w_3048,h_2286,c_limit/skin-care-trends-2021-lede.jpg" alt="" />
                     </div>
                     <div className="content d-flex flex-column align-items-center justify-content-end me-5">
                         <h4> Fillers are so underated </h4>

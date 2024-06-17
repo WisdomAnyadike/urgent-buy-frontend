@@ -17,12 +17,14 @@ import { manageAdminHook } from './manageAdminHook';
 import { createProduct } from '../../../services/admin';
 import Preloader from '../../Components/loader/loader';
 import Logo from '../../Components/logo/logo';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
 const Adminpage = () => {
+  const token = localStorage.getItem('adminToken')
   const [loaded, setLoaded] = useState(true)
   const [isloading, setIsLoading] = useState(false)
   const [active, setActive] = useState(false);
@@ -49,6 +51,7 @@ const Adminpage = () => {
   const [productDescription, setProductDescription] = useState('')
   const [productCategory, setProductCategory] = useState('')
   const [customer, setCustomer] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
     const element = document.getElementById("list-dashboard-list");
@@ -60,6 +63,13 @@ const Adminpage = () => {
       secElement.classList.add("buttonact2");
     }
   }, []);
+
+  useEffect(() => {
+    if (!token) {
+      alert('page restricted')
+      navigate('/adminLogin')
+    }
+  })
 
 
   const { getUser, getUser1, getUser2, getUser3, getUser4, getUser5, getTransactions, getTransactions1, getTransactions2,
@@ -209,7 +219,7 @@ const Adminpage = () => {
       try {
         const res = await axios.post(`https://ecom-backend-mezo.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
         if (res.data.status === 'okay') {
-          alert('successfully accepted')
+          alert(`${status === 'success' ? 'Successfully accepted' : 'Successfully rejected'}`)
         } else {
           alert('failed')
         }
@@ -346,7 +356,7 @@ const Adminpage = () => {
               </div>
 
               <div style={{ width: "fit-content" }}>
-              <Logo/>
+                <Logo />
 
               </div>
 
@@ -643,7 +653,7 @@ const Adminpage = () => {
                   <div className="d-flex w-100 mb-3">
                     <div className="col-sm-offset-3 col-sm-9">
                       <button type="submit" disabled={isloading} style={{ width: "100px", height: "40px" }} onClick={(e) => handleSubmit(e)} className="btn btn-dark  d-flex align-items-center justify-content-center"> {isloading ? <Preloader /> : 'Submit'}</button>
-                     
+
                     </div>
                   </div>
                 </form>

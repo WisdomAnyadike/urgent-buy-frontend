@@ -29,7 +29,6 @@ const App = () => {
     <Route path='/checkout' element={<Checkout/>}/> 
     <Route path='/settings' element={<Settings/>}/> 
     <Route path='/item' element={<ProductShowcase/>}/> 
-
    </Route>
    <Route  path='*' element={<Error/>} />
    <Route path='/forgotpassword' element={<Forgotpassword/>}/> 

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
 
 
-    <footer className="text-center  text-dark foot w-100 p-0 " style={{ fontWeight: "bolder" }} >
+    <footer className="text-center text-dark foot w-100 p-0 " style={{ fontWeight: "bolder" }} >
 
 
 
@@ -53,8 +53,8 @@ const Footer = () => {
       <section className="mb-2">
         <div className=" d-flex justify-content-center">
           <div className="col-lg-8">
-            <p>
-              Welcome to UrgentBuy, your ultimate destination for trendy and affordable clothing!  Enjoy hassle-free shopping with fast delivery and easy returns.  Follow us on social media for style inspiration and exclusive discounts. Elevate your wardrobe with UrgentBuy today!
+            <p className='mt-4 mb-4'>
+             Follow us on social media for style inspiration and exclusive discounts. Elevate your skin with UrgentBuy today!
             </p>
           </div>
         </div>

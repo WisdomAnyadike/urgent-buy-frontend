@@ -29,7 +29,7 @@ function MydModalWithGrid(props) {
     const postIt = async () => {
         setIsLoading(true)
         try {
-            const res = await axios.post('https://ecom-backend-mezo.onrender.com/Api/Transaction/createTransaction', {
+            const res = await axios.post('https://ecommerce-backend-2-ykz2.onrender.com/Api/Transaction/createTransaction', {
                 transactionAmount: props.total,
                 transactionUser: userObj.FullName,
                 transactionTag: tag,

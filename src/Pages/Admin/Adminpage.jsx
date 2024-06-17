@@ -613,11 +613,11 @@ const Adminpage = () => {
                       >
                         {" "}
                         <option value={''}> Choose Category </option>
+                        <option value={'Skincare'}>Skincare  </option>
+                        <option value={'Cosmetics'}> Cosmetics</option>
+                        <option value={'Supplements'}> Supplements </option>
                         <option value={'Mens'}> Mens </option>
                         <option value={'Womens'}> Womens </option>
-                        <option value={'Jackets'}> Jackets </option>
-                        <option value={'Hats'}> Hats </option>
-                        <option value={'Trainers'}> Trainers </option>
                       </select>
                     </div>
                   </div>

@@ -5,22 +5,22 @@ import CategoryItems from '../category-items/CategoryItems'
 const DirectoryPage = () => {
 const catergories = [
   {
-    title: 'Injections',
+    title: 'Skincare',
     imageUrl: 'https://cdn.shopify.com/s/files/1/0070/7032/files/how-to-start-a-skincare-line-glow-oasis.jpg?v=1666895341',
     id: 1,
-    linkUrl: 'shop/hats'
+    linkUrl: 'shop/skincare'
   },
   {
-    title: 'Serums',
+    title: 'Cosmetics',
     imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/flawlessskin-1589384044.png?crop=0.5xw:1xh;center,top&resize=640:*',
     id: 2,
-    linkUrl: 'shop/jackets'
+    linkUrl: 'shop/cosmetics'
   },
   {
-    title: 'Masks',
+    title: 'Supplements',
     imageUrl: 'https://www.forestessentialsindia.com/blog/wp-content/uploads/2021/12/1-1.jpg',
     id: 3,
-    linkUrl: 'shop/sneakers'
+    linkUrl: 'shop/supplements'
   },
   {
     title: 'Womens',

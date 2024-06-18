@@ -61,7 +61,7 @@ const handleValidate = (e)=> {
             },3000)
           
         }else {
-          setisLoading(false)
+          setisLoading1(false)
             toast.error('Invalid Otp')
         }
 

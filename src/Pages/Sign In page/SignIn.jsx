@@ -182,7 +182,7 @@ const SignIn = () => {
 
 					<button type='submit' disabled={isLoading1} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ minWidth: "160px", height: '50px' }} >{isLoading1 ? <Preloader/> : 'Sign In'}</button>
 					<div style={{ zIndex: '10' }}>       <ToastContainer
-						position='top-right'
+						position='bottom-right'
 						progressStyle={{
 							backgroundColor: '#black'
 						}

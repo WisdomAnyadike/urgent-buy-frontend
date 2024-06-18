@@ -35,7 +35,7 @@ const SignIn = () => {
 		}, validationSchema: yup.object({
 			FullName: yup.string().min(5, 'Must be at least 5 characters').required('Name is required'),
 			Email: yup.string().email('Must be a valid email').required('Email is required'),
-		Password: yup.string().matches('^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#*/.,])[A-Za-z0-9@#*]{8,}$', 'Must be a strong password(consist of atleast a number & special character)').required('Password is required')
+		Password: yup.string().matches('^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@#*/,.])[A-Za-z0-9@#*,./]{8,}$', 'Must be a strong password(consist of atleast a number & special character)').required('Password is required')
 
 		}), onSubmit: async (value) => {
 			setIsLoading(true)

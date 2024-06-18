@@ -18,7 +18,7 @@ const ProductList = ({ products }) => {
     let confirm = window.confirm('are you sure')
     if (confirm) {
       try {
-        const res = await axios.post(`https://ecommerce-backend-2-ykz2.onrender.com/Api/Products/deleteProduct/${id}`)
+        const res = await axios.post(`https://blackdiamondluxe-backend-1.onrender.com/Api/Products/deleteProduct/${id}`)
         if (res.data.status == 'okay') {
           setIsLoading2(false)
           alert(res.data.message)
@@ -74,7 +74,7 @@ const ProductList = ({ products }) => {
     }
 
     try {
-      const res = await axios.post(`https://ecommerce-backend-2-ykz2.onrender.com/Api/Products/editProduct/${productToEdit._id}`, productObject)
+      const res = await axios.post(`https://blackdiamondluxe-backend-1.onrender.com/Api/Products/editProduct/${productToEdit._id}`, productObject)
 
       if (res.data.status == 'okay') {
         setIsLoading(false)
@@ -114,7 +114,7 @@ const ProductList = ({ products }) => {
                           <h6 className="mt-0 font-weight-bold mb-2">{productCategory}</h6>
                           <p className="font-italic text-muted mb-0 small">{productDescription}</p>
                           <div className="d-flex align-items-center justify-content-between mt-1">
-                            <h6 className="font-weight-bold my-2">&#x20B9;{productPrice}</h6>
+                            <h5 className="font-weight-bold my-2">${productPrice}.00</h5>
                             <ul className="list-inline small">
                               <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
                               <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>

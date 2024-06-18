@@ -13,7 +13,7 @@ const Shop = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get('https://ecommerce-backend-2-ykz2.onrender.com/Api/Products/getProducts').then((res) => {
+    axios.get('https://blackdiamondluxe-backend-1.onrender.com/Api/Products/getProducts').then((res) => {
       setIsLoading(false)
       setData(res.data.data);
 

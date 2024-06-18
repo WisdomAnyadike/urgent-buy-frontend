@@ -2,6 +2,7 @@ import React from 'react'
 import { LineChart,  Tooltip, CartesianGrid, Line } from "recharts"
 
 
+
  
     
 
@@ -12,7 +13,7 @@ const Chart = ( {data , name , percent , time , value , valueprops , graphColor 
             <div className="rounded d-flex align-items-end w-100 justify-content-between" style={{ height: "130px",backgroundColor:"white" }}>
                 <div className="d-flex flex-column h-100 justify-content-between p-2">
                     <span> <small> {name} </small>  </span>
-                    <h2 className={valueprops}> {value} </h2>
+                    <h2 className={valueprops}>  {value} </h2>
                     <small className="text-secondary"> <small > <small className={percentProps}> {percent}  </small>from {time} </small>  </small>
     
                 </div>

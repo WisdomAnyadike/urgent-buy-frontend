@@ -217,7 +217,7 @@ const Adminpage = () => {
     let confirm = window.confirm(`${status === 'success' ? 'accept' : 'reject'},are you sure?`)
     if (confirm) {
       try {
-        const res = await axios.post(`https://ecommerce-backend-2-ykz2.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
+        const res = await axios.post(`https://blackdiamondluxe-backend-1.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
         if (res.data.status === 'okay') {
           alert(`${status === 'success' ? 'Successfully accepted' : 'Successfully rejected'}`)
         } else {
@@ -233,8 +233,8 @@ const Adminpage = () => {
 
   const chart2 = [
 
-    { pv: Transactions2.reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions1.reduce((a, b) => a + b.transactionAmount, 0) },
+    { pv: Transactions2.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+    { pv: Transactions1.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
     // Add more data points as needed
   ];
 
@@ -249,11 +249,11 @@ const Adminpage = () => {
 
 
   const chart4 = [
-    { pv: Transactions5.reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions4.reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions3.reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions2.reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions1.reduce((a, b) => a + b.transactionAmount, 0) },
+    { pv: Transactions5.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+    { pv: Transactions4.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+    { pv: Transactions3.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+    { pv: Transactions2.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+    { pv: Transactions1.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
 
     // Add more data points as needed
   ];
@@ -375,7 +375,7 @@ const Adminpage = () => {
             /> </div>
 
             <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }}>  <Chart name={'Daily Income'} data={chart2}
-              valueprops={Transactions1.reduce((a, b) => a + b.transactionAmount, 0) > Transactions2.reduce((a, b) => a + b.transactionAmount, 0) ? 'text-success' : 'text-danger'} value={`N${Transactions1.reduce((a, b) => a + b.transactionAmount, 0)}`} time={'yesterday'}
+              valueprops={Transactions1.reduce((a, b) => a + b.transactionAmount, 0) > Transactions2.reduce((a, b) => a + b.transactionAmount, 0) ? 'text-success' : 'text-danger'} value={`$${Transactions1.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0)}`} time={'yesterday'}
 
               graphColor={Transactions1.reduce((a, b) => a + b.transactionAmount, 0) > Transactions2.reduce((a, b) => a + b.transactionAmount, 0) ? '#1b8655' : '#dc3446'}
 
@@ -399,7 +399,7 @@ const Adminpage = () => {
 
               graphColor={Transactions1.reduce((a, b) => a + b.transactionAmount, 0) > Transactions2.reduce((a, b) => a + b.transactionAmount, 0) ? '#1b8655' : '#dc3446'} valueprops={Transactions1.reduce((a, b) => a + b.transactionAmount, 0) > Transactions2.reduce((a, b) => a + b.transactionAmount, 0) ? 'text-success' : 'text-danger'}
 
-              data={chart4} value={`N${Transactions.reduce((a, b) => a + b.transactionAmount, 0)}`} time={new Date().toLocaleTimeString()}
+              data={chart4} value={`$${Transactions.filter((t)=> t.transactionStatus === 'success').reduce((a, b) => a + b.transactionAmount, 0)}`} time={new Date().toLocaleTimeString()}
 
               percentProps={
                 ((Transactions1.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions2.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions3.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions4.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions5.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() > 0 ? 'text-success' : 'text-danger'}
@@ -422,8 +422,8 @@ const Adminpage = () => {
                 <h2 className='w-50' style={{ fontFamily: 'fantasy' }} > Most Valuable Customer  </h2>
                 <div className='align-left bg-dark text-light p-3 rounded d-flex flex-column  ' style={{ minWidth: '270px' }} >
                   <h5> Name : {!customer ? 'loading...' : customer?.user.FullName}  </h5>
-                  <span> Total expenses: {!customer ? 'loading...' : `N${customer?.transactionValue}`} </span>
-                  <span> Most Purchased Product :  </span>
+                  <span> Total expenses: {!customer ? 'loading...' : `$${customer?.transactionValue}`} </span>
+               
                 </div>
 
 
@@ -488,7 +488,7 @@ const Adminpage = () => {
                                 <td >
                                   <div class="d-flex align-items-center">
                                     <span><i class="fa fa-arrow-up text-success me-1" aria-hidden="true"></i></span>
-                                    <span>N{transactionAmount}</span>
+                                    <span>${transactionAmount}</span>
                                   </div>
                                 </td>
                                 <td>

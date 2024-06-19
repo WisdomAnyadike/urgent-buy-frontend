@@ -69,7 +69,7 @@ const Adminpage = () => {
       alert('page restricted')
       navigate('/adminLogin')
     }
-  })
+  } , [])
 
 
   const { getUser, getUser1, getUser2, getUser3, getUser4, getUser5, getTransactions, getTransactions1, getTransactions2,

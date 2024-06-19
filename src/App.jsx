@@ -20,7 +20,6 @@ const App = () => {
 
     <Routes>
     <Route path='/' element={<Home/>}>
-
     <Route index element={<DirectoryPage/>}/> 
     <Route path='/category/:category' element={<ShopPage/>}/> 
     <Route path='/signin' element={<SignIn/>}/> 

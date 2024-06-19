@@ -33,7 +33,7 @@ const Changepassword = () => {
     }
     else {
       try {
-        const res = await axios.post('https://blackdiamondluxe-backend-1.onrender.com/Api/User/changePassword', { Password: password }
+        const res = await axios.post('https://blackdiamondluxe.onrender.com/Api/User/changePassword', { Password: password }
         )
         if (res.data.status === 'okay') {
           isLoading(false)

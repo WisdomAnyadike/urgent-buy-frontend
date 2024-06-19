@@ -102,9 +102,7 @@ const Home = () => {
             </Carousel>
           </div>
 
-          <div className='mt-5'>
-            <Design />
-          </div>
+          
 
 
           <div data-aos="fade-up" className='ads w-100 ' style={{ height: "200px" }}>
@@ -114,6 +112,9 @@ const Home = () => {
           </div>
 
 
+          <div className='mt-5'>
+            <Design />
+          </div>
 
 
         </>}
@@ -131,6 +132,7 @@ const Home = () => {
         <div className='mt-5'>
           {body && <Reviews />}
         </div>
+
 
 
 

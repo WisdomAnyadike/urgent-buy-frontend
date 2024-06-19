@@ -29,7 +29,7 @@ function MydModalWithGrid(props) {
     const postIt = async () => {
         setIsLoading(true)
         try {
-            const res = await axios.post('https://blackdiamondluxe-backend-1.onrender.com/Api/Transaction/createTransaction', {
+            const res = await axios.post('https://blackdiamondluxe.onrender.com/Api/Transaction/createTransaction', {
                 transactionAmount: props.total,
                 transactionUser: userObj.FullName,
                 transactionTag: tag,

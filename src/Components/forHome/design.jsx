@@ -5,7 +5,7 @@ const Design = () => {
   return (
     <div class="containers ">
   <a data-aos='zoom-in' class="card2" href="#">
-    <h3>This is option 1</h3>
+    <h3></h3>
     <p class="small">Card description with lots of great facts and interesting details.</p>
     <div class="go-corner" href="#">
       <div class="go-arrow">
@@ -15,7 +15,7 @@ const Design = () => {
   </a>
   
   <a data-aos='zoom-in' class="card2" href="#">
-    <h3>This is option 1</h3>
+    <h3></h3>
     <p class="small">Card description with lots of great facts and interesting details.</p>
     <div class="go-corner" href="#">
       <div class="go-arrow">
@@ -25,7 +25,7 @@ const Design = () => {
   </a>
   
   <a data-aos='zoom-in' class="card2" href="#">
-    <h3>This is option 1</h3>
+    <h3></h3>
     <p class="small">Card description with lots of great facts and interesting details.</p>
     <div class="go-corner" href="#">
       <div class="go-arrow">

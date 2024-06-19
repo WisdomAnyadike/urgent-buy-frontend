@@ -26,7 +26,7 @@ const handleSubmit = async(e)=> {
   setisLoading(true)
     e.preventDefault()
 try {
-    const res = await axios.post('https://blackdiamondluxe-backend-1.onrender.com/Api/User/getOtp' , {Email})
+    const res = await axios.post('https://blackdiamondluxe.onrender.com/Api/User/getOtp' , {Email})
 
     if (res.data.status === 'okay' ) {
       setisLoading(false)

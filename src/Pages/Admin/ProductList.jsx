@@ -18,7 +18,7 @@ const ProductList = ({ products }) => {
     let confirm = window.confirm('are you sure')
     if (confirm) {
       try {
-        const res = await axios.post(`https://blackdiamondluxe-backend-1.onrender.com/Api/Products/deleteProduct/${id}`)
+        const res = await axios.post(`https://blackdiamondluxe.onrender.com/Api/Products/deleteProduct/${id}`)
         if (res.data.status == 'okay') {
           setIsLoading2(false)
           alert(res.data.message)
@@ -74,7 +74,7 @@ const ProductList = ({ products }) => {
     }
 
     try {
-      const res = await axios.post(`https://blackdiamondluxe-backend-1.onrender.com/Api/Products/editProduct/${productToEdit._id}`, productObject)
+      const res = await axios.post(`https://blackdiamondluxe.onrender.com/Api/Products/editProduct/${productToEdit._id}`, productObject)
 
       if (res.data.status == 'okay') {
         setIsLoading(false)

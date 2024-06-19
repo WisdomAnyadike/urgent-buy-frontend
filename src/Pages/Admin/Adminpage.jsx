@@ -217,7 +217,7 @@ const Adminpage = () => {
     let confirm = window.confirm(`${status === 'success' ? 'accept' : 'reject'},are you sure?`)
     if (confirm) {
       try {
-        const res = await axios.post(`https://blackdiamondluxe-backend-1.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
+        const res = await axios.post(`https://blackdiamondluxe.onrender.com/Api/Transaction/confirmStatus/${id}`, { status })
         if (res.data.status === 'okay') {
           alert(`${status === 'success' ? 'Successfully accepted' : 'Successfully rejected'}`)
         } else {

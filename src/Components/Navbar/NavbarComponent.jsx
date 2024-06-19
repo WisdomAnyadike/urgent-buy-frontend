@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "/src/Components/Navbar/navigation.styles.scss";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -12,7 +12,7 @@ import Logo from "../logo/logo";
 
 
 const NavbarComponent = () => {
- 
+ const navigate = useNavigate()
   const location = useLocation()
   const [showSignout, setShowSignOut] = useState(false)
 
@@ -32,7 +32,8 @@ const NavbarComponent = () => {
         return 
       } else {
         alert("Youre not authorized to view this page , sign in");
-        window.location.href = '/signin'
+        // window.location.href = '/signin'
+        navigate('/signin')
       }
 
     }
@@ -58,7 +59,7 @@ const NavbarComponent = () => {
     const verifyLogout = window.confirm("are you sure?");
     if (verifyLogout) {
       localStorage.removeItem("urgentBuyToken");
-      window.location.href = '/'
+      navigate('/')
     }
 
 

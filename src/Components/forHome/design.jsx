@@ -5,8 +5,8 @@ const Design = () => {
   return (
     <div class="containers ">
   <a data-aos='zoom-in' class="card2" href="#">
-    <h3></h3>
-    <p class="small">Card description with lots of great facts and interesting details.</p>
+    
+    <p class="small"> <b> Chemical Free</b> , Card description with lots of great facts and interesting details.</p>
     <div class="go-corner" href="#">
       <div class="go-arrow">
         →
@@ -15,8 +15,8 @@ const Design = () => {
   </a>
   
   <a data-aos='zoom-in' class="card2" href="#">
-    <h3></h3>
-    <p class="small">Card description with lots of great facts and interesting details.</p>
+   
+    <p class="small">  <b> Reliable </b> ,Card description with lots of great facts and interesting details.</p>
     <div class="go-corner" href="#">
       <div class="go-arrow">
         →
@@ -25,8 +25,8 @@ const Design = () => {
   </a>
   
   <a data-aos='zoom-in' class="card2" href="#">
-    <h3></h3>
-    <p class="small">Card description with lots of great facts and interesting details.</p>
+    
+    <p class="small"> <b> All over the world</b> , Card description with lots of great facts and interesting details.</p>
     <div class="go-corner" href="#">
       <div class="go-arrow">
         →

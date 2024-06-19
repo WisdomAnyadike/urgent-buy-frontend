@@ -106,9 +106,9 @@ const Home = () => {
 
 
           <div data-aos="fade-up" className='ads w-100 ' style={{ height: "200px" }}>
-            <h2 data-aos="fade-up-right" style={{ fontFamily: "cursive" }}>  Chemical Free </h2>
-            <h2 data-aos="flip-left" style={{ fontFamily: "cursive" }}>  Reliable </h2>
-            <h2 data-aos="fade-down-left" style={{ fontFamily: "cursive" }}>   All over the world</h2>
+           
+            <h1 data-aos="flip-left" style={{ fontFamily: "cursive" }}> 💎 Black Diamond Luxe </h1>
+           
           </div>
 
 

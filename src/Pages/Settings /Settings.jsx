@@ -276,7 +276,7 @@ const Settings = () => {
                       All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
                     </div>
 
-                    <button type="submit" disabled={isLoading1} onClick={changeUserInfo} className="btn mt-4 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#000", color: 'white', width: "100px", height: "37px" }}>
+                    <button type="submit" disabled={isLoading1} onClick={changeUserInfo} className="btn mt-4 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#000", color: 'white', width: "120px", height: "37px" }}>
                       {isLoading1 ? <Preloader /> : 'Update Profile'}
 
                     </button>
@@ -294,7 +294,7 @@ const Settings = () => {
                       <label className="d-block text-danger">Delete Account</label>
                       <p className="text-muted font-size-sm">Once you delete your account, there is no going back. Please be certain.</p>
                     </div>
-                    <button onClick={(e) => handleDelete(e)} disabled={isLoading3} className="btn btn-danger d-flex align-items-center justify-content-center" style={{ width: "100px", height: "37px" }} type="button"> {isLoading3 ? <Preloader /> : 'Delete Account'}</button>
+                    <button onClick={(e) => handleDelete(e)} disabled={isLoading3} className="btn btn-danger d-flex align-items-center justify-content-center" style={{ width: "120px", height: "37px" }} type="button"> {isLoading3 ? <Preloader /> : 'Delete Account'}</button>
                   </form>
                 </div>
                 <div className={`tab-pane ${activeTab === 'security' ? 'active' : ''}`} id="security">
@@ -309,7 +309,7 @@ const Settings = () => {
 
 
 
-                    <button className="btn d-flex align-items-center justify-content-center" disabled={isLoading2} onClick={changePassword} style={{ backgroundColor: "#000", color: 'white', width: "160px", height: "37px" }} type="submit">
+                    <button className="btn d-flex align-items-center justify-content-center" disabled={isLoading2} onClick={changePassword} style={{ backgroundColor: "#000", color: 'white', width: "190px", height: "37px" }} type="submit">
                       {isLoading2 ? <Preloader /> : 'Confirm Password Change'}
                     </button>
                     <p className="small text-muted mt-2">Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in.</p>

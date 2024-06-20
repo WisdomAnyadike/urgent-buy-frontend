@@ -120,9 +120,9 @@ const Home = () => {
           </div>
 
 
-          <div className='mt-5'>
+          {/* <div className='mt-5'>
             <Design />
-          </div>
+          </div> */}
 
 
         </>}

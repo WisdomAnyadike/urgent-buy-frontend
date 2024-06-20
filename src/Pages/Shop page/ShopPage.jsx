@@ -15,7 +15,7 @@ const ShopPage = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    axios.get(`https://blackdiamondluxe-backend-1.onrender.com/Api/Products/getProductsByCategory/${category}`).then((res) => {
+    axios.get(`hhttps://blackdiamondluxe.onrender.com/Api/Products/getProductsByCategory/${category}`).then((res) => {
       setData(res.data.product)
       setIsLoading(false)
     }

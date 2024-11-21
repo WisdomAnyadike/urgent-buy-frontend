@@ -32,18 +32,18 @@ const Adminpage = () => {
   const [size, setSize] = useState('default');
   const [buttonShape, setButtonShape] = useState('default');
   const [products, setProducts] = useState([])
-  const [Users, setUsers] = useState([])
-  const [Users1, setUsers1] = useState([])
-  const [Users2, setUsers2] = useState([])
-  const [Users3, setUsers3] = useState([])
-  const [Users4, setUsers4] = useState([])
-  const [Users5, setUsers5] = useState([])
+  // const [Users, setUsers] = useState([])
+  // const [Users1, setUsers1] = useState([])
+  // const [Users2, setUsers2] = useState([])
+  // const [Users3, setUsers3] = useState([])
+  // const [Users4, setUsers4] = useState([])
+  // const [Users5, setUsers5] = useState([])
   const [Transactions, setTransactions] = useState([])
-  const [Transactions1, setTransactions1] = useState([])
-  const [Transactions2, setTransactions2] = useState([])
-  const [Transactions3, setTransactions3] = useState([])
-  const [Transactions4, setTransactions4] = useState([])
-  const [Transactions5, setTransactions5] = useState([])
+  // const [Transactions1, setTransactions1] = useState([])
+  // const [Transactions2, setTransactions2] = useState([])
+  // const [Transactions3, setTransactions3] = useState([])
+  // const [Transactions4, setTransactions4] = useState([])
+  // const [Transactions5, setTransactions5] = useState([])
   const [MonthlyTransactions, setMonthlyTransactions] = useState([])
   const [productName, setProductName] = useState('')
   const [productImage, setProductImage] = useState('')
@@ -72,10 +72,7 @@ const Adminpage = () => {
   } , [])
 
 
-  const { getUser, getUser1, getUser2, getUser3, getUser4, getUser5, getTransactions, getTransactions1, getTransactions2,
-    getTransactions3,
-    getTransactions4,
-    getTransactions5,
+  const {  getTransactions,
     getMonthlyTransactions,
     getProducts } = manageAdminHook()
 
@@ -83,38 +80,19 @@ const Adminpage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const [userResponse, user1Response, user2Response, user3Response, user4Response, user5Response, transactions, transaction1, transaction2, transaction3, transaction4, transaction5, monthlyTransactions, Products] = await Promise.all([
-          getUser(),
-          getUser1(),
-          getUser2(),
-          getUser3(),
-          getUser4(),
-          getUser5(),
+        const [ transactions , monthlyTransactions, Products] = await Promise.all([
+        
           getTransactions(),
-          getTransactions1(),
-          getTransactions2(),
-          getTransactions3(),
-          getTransactions4(),
-          getTransactions5(),
           getMonthlyTransactions(),
           getProducts()
         ]);
 
-        if (userResponse) setUsers(userResponse);
-        if (user1Response) setUsers1(user1Response);
-        if (user2Response) setUsers2(user2Response);
-        if (user3Response) setUsers3(user3Response);
-        if (user4Response) setUsers4(user4Response);
-        if (user5Response) setUsers5(user5Response);
+   
         if (transactions) {
           setLoaded(false)
           setTransactions(transactions);
         }
-        if (transaction1) setTransactions1(transaction1);
-        if (transaction2) setTransactions2(transaction2);
-        if (transaction3) setTransactions3(transaction3);
-        if (transaction4) setTransactions4(transaction4);
-        if (transaction5) setTransactions5(transaction5);
+    
         if (monthlyTransactions) setMonthlyTransactions(monthlyTransactions)
         if (Products) setProducts(Products);
 
@@ -124,12 +102,8 @@ const Adminpage = () => {
     };
 
     fetchUsers();
-  }, [getUser, getUser1, getUser2, getUser3, getUser4, getUser5, getTransactions,
-    getTransactions1,
-    getTransactions2,
-    getTransactions3,
-    getTransactions4,
-    getTransactions5, getProducts]);
+  }, [ getTransactions,
+    getProducts]);
 
 
   const [searcher, setSearcher] = useState('')
@@ -231,49 +205,49 @@ const Adminpage = () => {
 
 
 
-  const chart2 = [
+  // const chart2 = [
 
-    { pv: Transactions2.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions1.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
-    // Add more data points as needed
-  ];
+  //   { pv: Transactions2.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+  //   { pv: Transactions1.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+  //   // Add more data points as needed
+  // ];
 
-  const chart3 = [
-    { pv: Users5.length },
-    { pv: Users4.length },
-    { pv: Users3.length },
-    { pv: Users2.length },
-    { pv: Users1.length },
-    // Add more data points as needed
-  ];
-
-
-  const chart4 = [
-    { pv: Transactions5.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions4.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions3.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions2.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
-    { pv: Transactions1.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
-
-    // Add more data points as needed
-  ];
+  // const chart3 = [
+  //   { pv: Users5.length },
+  //   { pv: Users4.length },
+  //   { pv: Users3.length },
+  //   { pv: Users2.length },
+  //   { pv: Users1.length },
+  //   // Add more data points as needed
+  // ];
 
 
-  const [activeUsers, setActiveUsers] = useState('')
-  const [activeUsers2, setActiveUsers2] = useState('')
-  useEffect(() => {
-    const todaysUsers = Transactions1.map(({ transactionUser }) => transactionUser)
-    setActiveUsers(new Set(todaysUsers).size)
-    const yesterdaysUsers = Transactions2.map(({ transactionUser }) => transactionUser)
-    setActiveUsers2(new Set(yesterdaysUsers).size)
-  }, [Transactions1, Transactions2])
+  // const chart4 = [
+  //   { pv: Transactions5.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+  //   { pv: Transactions4.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+  //   { pv: Transactions3.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+  //   { pv: Transactions2.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
+  //   { pv: Transactions1.filter((t)=> t.transactionStatus == 'success').reduce((a, b) => a + b.transactionAmount, 0) },
 
-  const chart1 = [
-    { pv: activeUsers2 },
-    { pv: activeUsers },
+  //   // Add more data points as needed
+  // ];
 
-    // Add more data points as needed
-  ];
+
+  // const [activeUsers, setActiveUsers] = useState('')
+  // const [activeUsers2, setActiveUsers2] = useState('')
+  // useEffect(() => {
+  //   const todaysUsers = Transactions1.map(({ transactionUser }) => transactionUser)
+  //   setActiveUsers(new Set(todaysUsers).size)
+  //   const yesterdaysUsers = Transactions2.map(({ transactionUser }) => transactionUser)
+  //   setActiveUsers2(new Set(yesterdaysUsers).size)
+  // }, [Transactions1, Transactions2])
+
+  // const chart1 = [
+  //   { pv: activeUsers2 },
+  //   { pv: activeUsers },
+
+  //   // Add more data points as needed
+  // ];
 
   const [pending, setPending] = useState([])
 
@@ -365,7 +339,7 @@ const Adminpage = () => {
 
 
           </div>
-          <div className=" p-2 d-flex align-items-center justify-content-between dashflexer" style={{ width: '99%' }}>
+          {/* <div className=" p-2 d-flex align-items-center justify-content-between dashflexer" style={{ width: '99%' }}>
             <div className="mb-2 dashwidth2  rounded d-flex align-items-center justify-content-center shadow" style={{ minWidth: "280px" }} >  <Chart data={chart1} name={'Active Users'} value={activeUsers} valueprops={activeUsers > activeUsers2 ? 'text-success' : 'text-danger'} time={'yesterday'}
 
               graphColor={activeUsers > activeUsers2 ? '#1b8655' : '#dc3446'}
@@ -408,10 +382,10 @@ const Adminpage = () => {
               percent={`${((Transactions1.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions2.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions3.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions4.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed() - ((Transactions5.reduce((a, b) => a + b.transactionAmount, 0) / Transactions.reduce((a, b) => a + b.transactionAmount, 0)) * 100).toFixed()}%`} /> </div>
 
 
-          </div>
+          </div> */}
 
           <div className="w-100 d-flex flex-wrap align-items-start justify-content-between">
-            <div className="resultque1 d-flex align-items-center justify-content-between flex-column">
+            {/* <div className="resultque1 d-flex align-items-center justify-content-between flex-column">
               <div
                 className=" rounded  flex-column p-2 d-flex shadow align-items-center justify-content-start mb-3"
                 style={{ width: "95%", minWidth: '300px', height: "625px", backgroundColor: "white" }}
@@ -434,11 +408,11 @@ const Adminpage = () => {
 
 
 
-            </div>
+            </div> */}
 
 
 
-            <div className="resultque1  d-flex align-items-center justify-content-between flex-column">
+            <div className="resultque1  d-flex align-items-center justify-content-between flex-column w-100">
 
 
 

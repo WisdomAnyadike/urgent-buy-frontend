@@ -27,7 +27,7 @@ const Settings = () => {
   const dispatch = useDispatch()
   const [picture, setPicture] = useState('https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg')
 
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useState('notification');
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
@@ -209,21 +209,21 @@ const Settings = () => {
             <div className="card" >
               <div className="card-body" style={{ height: "500px" }} data-aos="fade-zoom-out" >
                 <nav className="nav flex-column  nav-pills nav-gap-y-1"  >
-                  <a onClick={() => handleTabClick('profile')} data-toggle="tab" className={`nav-item d-flex align-items-center  nav-link has-icon nav-link-faded ${activeTab === 'profile' ? 'active' : ''}`} style={{ backgroundColor: activeTab === 'profile' ? '#000' : 'white', color: activeTab === 'profile' ? 'white' : '#000' }}>
+                  {/* <a onClick={() => handleTabClick('profile')} data-toggle="tab" className={`nav-item d-flex align-items-center  nav-link has-icon nav-link-faded ${activeTab === 'profile' ? 'active' : ''}`} style={{ backgroundColor: activeTab === 'profile' ? '#000' : 'white', color: activeTab === 'profile' ? 'white' : '#000' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-user mr-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <b className=' ms-2'> Profile Information </b>
-                  </a>
-                  <a onClick={() => handleTabClick('account')} className={`nav-item nav-link has-icon nav-link-faded ${activeTab === 'account' ? 'active' : ''}`} data-toggle="tab" style={{ backgroundColor: activeTab === 'account' ? '#000' : 'white', color: activeTab === 'account' ? 'white' : '#000' }}>
+                  </a> */}
+                  {/* <a onClick={() => handleTabClick('account')} className={`nav-item nav-link has-icon nav-link-faded ${activeTab === 'account' ? 'active' : ''}`} data-toggle="tab" style={{ backgroundColor: activeTab === 'account' ? '#000' : 'white', color: activeTab === 'account' ? 'white' : '#000' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-settings mr-2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><b className=' ms-2'> Account Settings  </b>
-                  </a>
-                  <a onClick={() => handleTabClick('security')} className={`nav-item d-flex align-items-center nav-link has-icon nav-link-faded ${activeTab === 'security' ? 'active' : ''}`} data-toggle="tab" style={{ backgroundColor: activeTab === 'security' ? '#000' : 'white', color: activeTab === 'security' ? 'white' : '#000' }}>
+                  </a> */}
+                  {/* <a onClick={() => handleTabClick('security')} className={`nav-item d-flex align-items-center nav-link has-icon nav-link-faded ${activeTab === 'security' ? 'active' : ''}`} data-toggle="tab" style={{ backgroundColor: activeTab === 'security' ? '#000' : 'white', color: activeTab === 'security' ? 'white' : '#000' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-shield mr-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><b className=' ms-2'> Security   </b>
-                  </a>
+                  </a> */}
                   <a onClick={() => handleTabClick('notification')} className={`nav-item d-flex align-items-center nav-link has-icon nav-link-faded ${activeTab === 'notification' ? 'active' : ''}`} data-toggle="tab" style={{ backgroundColor: activeTab === 'notification' ? '#000' : 'white', color: activeTab === 'notification' ? 'white' : '#000' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-bell mr-2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><b className=' ms-2'> Notification   </b>
                   </a>
-                  <a onClick={() => handleTabClick('billing')} className={`nav-item d-flex align-items-center nav-link has-icon nav-link-faded ${activeTab === 'billing' ? 'active' : ''}`} data-toggle="tab" style={{ backgroundColor: activeTab === 'billing' ? '#000' : 'white', color: activeTab === 'billing' ? 'white' : '#000' }}>
+                  {/* <a onClick={() => handleTabClick('billing')} className={`nav-item d-flex align-items-center nav-link has-icon nav-link-faded ${activeTab === 'billing' ? 'active' : ''}`} data-toggle="tab" style={{ backgroundColor: activeTab === 'billing' ? '#000' : 'white', color: activeTab === 'billing' ? 'white' : '#000' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-credit-card mr-2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> <b className=' ms-2'> Payment Status  </b>
-                  </a>
+                  </a> */}
                 </nav>
               </div>
             </div>
@@ -232,25 +232,25 @@ const Settings = () => {
             <div className="card">
               <div className="card-header border-bottom mb-3 d-flex d-md-none">
                 <ul className="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a onClick={() => handleTabClick('profile')} data-toggle="tab" className="nav-link has-icon active"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
-                  </li>
-                  <li className="nav-item">
+                  </li> */}
+                  {/* <li className="nav-item">
                     <a onClick={() => handleTabClick('account')} data-toggle="tab" className="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a>
-                  </li>
-                  <li className="nav-item">
+                  </li> */}
+                  {/* <li className="nav-item">
                     <a onClick={() => handleTabClick('security')} data-toggle="tab" className="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></a>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <a onClick={() => handleTabClick('notification')} data-toggle="tab" className="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></a>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a onClick={() => handleTabClick('billing')} data-toggle="tab" className="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div data-aos="fade-zoom-out" className="card-body  tab-content" style={{ height: "500px" }}>
-                <div className={`tab-pane ${activeTab === 'profile' ? 'active' : ''}`} id="profile">
+                {/* <div className={`tab-pane ${activeTab === 'profile' ? 'active' : ''}`} id="profile">
                   <h6 className='d-flex align-items-center justify-content-between'>YOUR PROFILE INFORMATION       <img width={'40px'} height={'40px'} className='rounded-circle' src={userObj.Picture || picture} alt="" /> </h6>
                   <hr />
                   <form className='d-flex flex-column align-items-start text-start p-1  justify-content-between' style={{ height: '300px' }}>
@@ -283,8 +283,8 @@ const Settings = () => {
                     <ToastContainer />
 
                   </form>
-                </div>
-                <div className={`tab-pane  ${activeTab === 'account' ? 'active' : ''}`} id="account">
+                </div> */}
+                {/* <div className={`tab-pane  ${activeTab === 'account' ? 'active' : ''}`} id="account">
                   <h6>ACCOUNT SETTINGS</h6>
                   <hr />
                   <form className='d-flex flex-column align-items-start text-start p-1  justify-content-between'>
@@ -296,8 +296,8 @@ const Settings = () => {
                     </div>
                     <button onClick={(e) => handleDelete(e)} disabled={isLoading3} className="btn btn-danger d-flex align-items-center justify-content-center" style={{ width: "120px", height: "37px" }} type="button"> {isLoading3 ? <Preloader /> : 'Delete Account'}</button>
                   </form>
-                </div>
-                <div className={`tab-pane ${activeTab === 'security' ? 'active' : ''}`} id="security">
+                </div> */}
+                {/* <div className={`tab-pane ${activeTab === 'security' ? 'active' : ''}`} id="security">
                   <h6>SECURITY SETTINGS</h6>
                   <hr />
                   <form className='d-flex flex-column align-items-start text-start p-1  justify-content-between' style={{ height: "250px" }}>
@@ -317,7 +317,7 @@ const Settings = () => {
                   </form>
                   <hr />
 
-                </div>
+                </div> */}
                 <div className={`tab-pane ${activeTab === 'notification' ? 'active' : ''}`} id="notification">
                   <h6>NOTIFICATION SETTINGS</h6>
                   <hr />
@@ -332,7 +332,7 @@ const Settings = () => {
 
                   </form>
                 </div>
-                <div className={`tab-pane ${activeTab === 'billing' ? 'active' : ''}`} id="billing">
+                {/* <div className={`tab-pane ${activeTab === 'billing' ? 'active' : ''}`} id="billing">
                   <h6> Check Payment Status</h6>
                   <hr />
                   <form className='d-flex flex-column align-items-start text-start p-1  justify-content-between'>
@@ -353,7 +353,7 @@ const Settings = () => {
 
                     </div>
                   </form>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -181,7 +181,8 @@ const SignIn = () => {
 					<Link style={{ minWidth: "180px" ,fontSize:"12px" }} className='pb-0 mb-0' to="/forgotpassword">Forgot your password?</Link>
 
 					<button type='submit' disabled={isLoading1} className='rounded mt-4 buttonClass d-flex align-items-center justify-content-center' style={{ minWidth: "160px", height: '50px' }} >{isLoading1 ? <Preloader/> : 'Sign In'}</button>
-					<div style={{ zIndex: '10' }}>       <ToastContainer
+					<div style={{ zIndex: '10' }}>      
+					 <ToastContainer
 						position='bottom-right'
 						progressStyle={{
 							backgroundColor: '#black'

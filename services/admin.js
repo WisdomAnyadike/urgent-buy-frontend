@@ -22,7 +22,7 @@ export const admitAdmin = async (payload) => {
   } catch (error) {
     console.log(error);
     return {
-      status: 'failed', message: error.response.data.message
+      status: 'failed', message: error
     }
   }
 
